@@ -1,0 +1,172 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <div class="pull-left">
+                <h4>Statistiques de la communauté</h4>
+            </div>
+            <div class="pull-right"></div>
+            <div class="clearfix"></div>
+        </h4>
+    </div>
+    <div class="panel-body">
+        <form ng-init="getCommunity()" class="form-horizontal">
+            <!--<div class="form-group">
+                <label class="control-label col-xs-3" for="id">Id:</label>
+                <div class="col-xs-9">
+                    <input ng-model="community.community.com_id" type="text" class="form-control" id="id" placeholder="Id" readonly="readonly">
+                </div>
+            </div>  -->
+    		<div class="form-group">
+                <label class="control-label col-xs-3" for="title">Titre:</label>
+                <div class="col-xs-9">
+                    <input ng-model="community.community.title" type="text" class="form-control" id="title" placeholder="Titre" readonly="readonly">
+                </div>
+            </div>     
+            <div class="form-group">
+                <label class="control-label col-xs-3" for="description">Description:</label>
+                <div class="col-xs-9">
+                    <input ng-model="community.community.description" type="text" class="form-control" id="description" placeholder="Description" readonly="readonly">
+                </div>
+            </div>     
+        </form>
+
+        <br>
+
+        <a href="javascript:history.back()">Retour</a>
+
+        <br/><br/>
+
+        <div class="alert alert-success" role="alert">
+            Faites votre choix :
+            <div class="btn-group" role="group" aria-label="...">
+                <button id="btn-groupe" type="button" class="btn btn-success" ng-click="getRankingInCommunity('GROUPE')">Classement et paris des poules</button>
+                <button id="btn-final" type="button" class="btn btn-success active" ng-click="getRankingInCommunity('FINAL');">Classement et paris de la phase finale</button>
+                <button id="btn-all" type="button" class="btn btn-success" ng-click="getRankingInCommunity('ALL');">Classement et paris globaux</button>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="container-fluid" ng-init="getRankingInCommunity('FINAL')">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="row">
+                        <div class="col-md-offset-2 col-md-8">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <div class="pull-left">
+                                            <h4>Classement de la communauté</h4>
+                                        </div>
+                                        <div class="pull-right"></div>
+                                        <div class="clearfix"></div>
+                                    </h4>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div id="divRanking" style="display:none">
+                                        <div id="no-more-tables" class="table-responsive">
+                                            <table class="table table-condensed table-striped">
+
+                                                <tbody>
+                                                    <tr ng-repeat="ranking in rankings.data.rankings">
+                                                        <td data-title="Classement"><span class="badge">{{$index + 1}}</span></td>
+                                                        <td data-title="NickName"><img height="32px" width="32px" class="img-circle" ng-src ="users/apiv1.0/users/{{ ranking.user.user_id }}/avatar?{{ currentDateForAvoidTheCache }}" > {{ranking.user.nickName}}</td>
+                                                        <td data-title="Points">{{ranking.nbPoints}}</td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                     </div>
+                                    <center><span id="spinRanking"><img src="static/img/spin.gif"></span></center>
+                                    <center><a href="#stats_ranking"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Classement général</a></center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <div class="pull-left">
+                                    <h4>Les paris (des matchs clos)</h4>
+                                </div>
+                                <div class="pull-right"></div>
+                                <div class="clearfix"></div>
+                            </h4>
+                        </div>
+                        <div class="panel-body">
+
+                            <center><span id="spinBets"><img src="static/img/spin.gif"></span></center>
+
+                            <div id="divBets" style="display:none">
+                                <div id="no-more-tables" class="table-responsive">
+                                    <table class="table table-condensed table-striped">
+                                        <thead>
+                                            <th></th>
+                                            <th ng-repeat="bet in rankings.data.rankings[0].communities[0].bets">
+                                                <center>{{bet.teamA}} vs {{bet.teamB}}</center>
+                                            </th>
+                                            <th></th>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="ranking in rankings.data.rankings  | orderBy:'user.nickName'">
+                                                <td><b>{{ ranking.user.nickName }}</b><br/>{{ ranking.nbPoints }} pts</td>
+                                                <td ng-repeat="bet in ranking.communities[0].bets" data-title="{{bet.teamA}} vs {{bet.teamB}}" ><span ng-show="!bet.notClosed"><center>{{bet.resultA}}:{{bet.resultB}}<br/> Pts:{{bet.nbpoints}}</center></span><span ng-show="bet.notClosed"><center>&nbsp;</center></span></td>
+                                                <td><b>{{ ranking.user.nickName }}</b><br/>{{ ranking.nbPoints }} pts</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <th></th>
+                                            <th ng-repeat="bet in rankings.data.rankings[0].communities[0].bets">
+                                                <center>{{bet.teamA}} vs {{bet.teamB}}</center>
+                                            </th>
+                                            <th></th>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <div class="pull-left">
+                                    <h4>Historique du classement de la communauté</h4>
+                                </div>
+                                <div class="pull-right"></div>
+                                <div class="clearfix"></div>
+                            </h4>
+                        </div>
+                        <div ng-controller="statsRankingCtrl" class="panel-body" ng-init="getHistoryRanking()">
+
+                            <center><span id="spin3"><img src="static/img/spin.gif"></span></center>
+                            <div class="ct-chart ct-chart-line"></div>
+                            <center><a href="#stats_historyranking"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Historique du classement général</a></center>
+
+                        </div>
+                    </div>
+                </div>
+
+                <a href="javascript:history.back()">Retour</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'static/js/piwik.js'"></div>
