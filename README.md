@@ -1,37 +1,42 @@
-# Flask Sample Application
+# eurommxvi
+clone of Openshift repo
 
-This repository provides a sample Python web application implemented using the Flask web framework and hosted using ``gunicorn``. It is intended to be used to demonstrate deployment of Python web applications to OpenShift 3.
+Basicaly, this website is to manage bets for the Euro 2016 championship.
 
-## Implementation Notes
+But the actual goal is to **learn** how to developp with **Python** and **AngularJS** in **Cloud** environment.
+This website is based on the amazing simple Flask framework and on mongoDB to store persistant data.
 
-This sample Python application relies on the support provided by the default S2I builder for deploying a WSGI application using the ``gunicorn`` WSGI server. The requirements which need to be satisfied for this to work are:
+Organisation
+===
+static
+--
+AngularJS entry point to display the single page application.
 
-* The WSGI application code file needs to be named ``wsgi.py``.
-* The WSGI application entry point within the code file needs to be named ``application``.
-* The ``gunicorn`` package must be listed in the ``requirements.txt`` file for ``pip``.
+users
+--
+Package which manages CRUD user and authentication services.
 
-In addition, the ``.s2i/environment`` file has been created to allow environment variables to be set to override the behaviour of the default S2I builder for Python.
+communities
+--
+Package which manages CRUD service for Community and very simple *Blog* services.
 
-* The environment variable ``APP_CONFIG`` has been set to declare the name of the config file for ``gunicorn``.
+matchs
+--
+Package which manages repository matchs (= the list of all match of the championshift)
 
-## Deployment Steps
+bets
+--
+Package which manages the bet of users in all communities.
 
-To deploy this sample Python web application from the OpenShift web console, you should select ``python:2.7``, ``python:3.3``, ``python:3.4`` or ``python:latest``, when using _Add to project_. Use of ``python:latest`` is the same as having selected the most up to date Python version available, which at this time is ``python:3.4``.
+chat
+--
+User can write messages on a wall to push somes opinions.
 
-The HTTPS URL of this code repository which should be supplied to the _Git Repository URL_ field when using _Add to project_ is:
+stats
+--
+A good bet web site must display many view about bets and rankings.
+This package groups services to request in DB to show many view on statistics.
 
-* https://github.com/OpenShiftDemos/os-sample-python.git
 
-If using the ``oc`` command line tool instead of the OpenShift web console, to deploy this sample Python web application, you can run:
+to be continued
 
-```
-oc new-app https://github.com/OpenShiftDemos/os-sample-python.git
-```
-
-In this case, because no language type was specified, OpenShift will determine the language by inspecting the code repository. Because the code repository contains a ``requirements.txt``, it will subsequently be interpreted as including a Python application. When such automatic detection is used, ``python:latest`` will be used.
-
-If needing to select a specific Python version when using ``oc new-app``, you should instead use the form:
-
-```
-oc new-app python:2.7~https://github.com/OpenShiftDemos/os-sample-python.git
-```
