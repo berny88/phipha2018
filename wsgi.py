@@ -1,9 +1,8 @@
-from flask import Flask
-application = Flask(__name__)
+print(" starting PhiPha .....")
 
-@application.route("/")
-def hello():
-    return "<h1>Hello World from berny To stephou !!!</h1>"
+from flaskapp import app as application
+
+print(" after initialization .....")
 
 if __name__ == "__main__":
     application.run()
