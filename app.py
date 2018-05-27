@@ -6,16 +6,17 @@ import logging.handlers
 from pymongo import MongoClient
 
 print("start app.py")
+print(__name__)
 
 application = flask.Flask(__name__)
 
-from bets.BetsServices import bets_page
-from chat.ChatServices import chat_page
-from communities.CommunityServices import communities_page
-from matchs.MatchServices import matchs_page
-from stats.StatsServices import stats_page
-from tools.Tools import ToolManager, tools_page
-from users.UserServices import users_page
+from .bets.BetsServices import bets_page
+from .chat.ChatServices import chat_page
+from .communities.CommunityServices import communities_page
+from .matchs.MatchServices import matchs_page
+from .stats.StatsServices import stats_page
+from .tools.Tools import ToolManager, tools_page
+from .users.UserServices import users_page
  
 
 application.register_blueprint(communities_page, url_prefix="/communities", template_folder='templates')
