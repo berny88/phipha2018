@@ -29,6 +29,7 @@ application.register_blueprint(chat_page, url_prefix="/chat", template_folder='t
 
 # Only enable Flask debugging if an env var is set to true
 application.debug = os.environ.get('FLASK_DEBUG') in ['true', 'True']
+print("Started...")
 
 application.logger.info('Started')
 ch = logging.StreamHandler(sys.stdout)
@@ -90,4 +91,5 @@ def ma_page_404(error):
     
  
 if __name__ == '__main__':
+    print("main application.run")
     application.run(host='0.0.0.0')
