@@ -5,6 +5,8 @@ import logging
 import logging.handlers
 from pymongo import MongoClient
 
+application = flask.Flask(__name__)
+
 from bets.BetsServices import bets_page
 from chat.ChatServices import chat_page
 from communities.CommunityServices import communities_page
@@ -13,7 +15,6 @@ from stats.StatsServices import stats_page
 from tools.Tools import ToolManager, tools_page
 from users.UserServices import users_page
  
-application = flask.Flask(__name__)
 
 application.register_blueprint(communities_page, url_prefix="/communities", template_folder='templates')
 application.register_blueprint(users_page, url_prefix="/users", template_folder='templates')
