@@ -20,7 +20,7 @@ except IOError:
 
 print(" starting euroXXXVI .....")
 
-from application import application as application
+from app import application as application
 
 #
 # Below for testing only
