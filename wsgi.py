@@ -30,6 +30,7 @@ from app import application as application
 # Below for testing only
 #
 if __name__ == '__main__':
+    print(" starting from wsgi main")
     from wsgiref.simple_server import make_server
 
     httpd = make_server('localhost', 8051, application)
