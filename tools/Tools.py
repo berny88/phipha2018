@@ -19,9 +19,9 @@ class DbManager:
     """
     def __init__(self):
         self.DATE_FORMAT = '%Y-%m-%dT%H:%M:%S UTC'
-        client = MongoClient(os.environ['OPENSHIFT_MONGODB_DB_URL'])
-        logger.info(u'conn={}'.format(os.environ['OPENSHIFT_MONGODB_DB_URL']))
-        self.db = client.euroxxxvi
+        client = MongoClient("mongodb+srv://phipha:phiphaxxxviii@phiphaxxxviii-cs6ex.mongodb.net")
+        logger.info(u'conn={}'.format("mongodb+srv://phipha:phiphaxxxviii@phiphaxxxviii-cs6ex.mongodb.net"))
+        self.db = client.betDb
         logger.info(u'db={}'.format(self.db))
 
     def datetime_parser(self, dct):
@@ -45,9 +45,9 @@ class DbManager:
     def getDb(self):
         """ get Mongo DB access """
         if (self.db is None):
-            client = MongoClient(os.environ['OPENSHIFT_MONGODB_DB_URL'])
-            logger.info(u'getDb::conn={}'.format(os.environ['OPENSHIFT_MONGODB_DB_URL']))
-            self.db = client.euroxxxvi
+            client = MongoClient("mongodb+srv://phipha:phiphaxxxviii@phiphaxxxviii-cs6ex.mongodb.net")
+            logger.info(u'getDb::conn={}'.format("mongodb+srv://phipha:phiphaxxxviii@phiphaxxxviii-cs6ex.mongodb.net"))
+            self.db = client.betDb
             logger.info(u'getDb::db={}'.format(self.db))
 
         return self.db
