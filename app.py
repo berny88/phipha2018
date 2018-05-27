@@ -5,6 +5,8 @@ import logging
 import logging.handlers
 from pymongo import MongoClient
 
+print("start app.py")
+
 application = flask.Flask(__name__)
 
 from bets.BetsServices import bets_page
