@@ -93,4 +93,4 @@ def ma_page_404(error):
 if __name__ == '__main__':
     print("main app.py application.run")
     print(os.environ.get('OPENSHIFT_PYTHON_PORT', 8080))
-    application.run(host='0.0.0.0', os.environ.get('OPENSHIFT_PYTHON_PORT', 8080))
+    application.run(host='0.0.0.0', port=os.environ.get('OPENSHIFT_PYTHON_PORT', 8080))
