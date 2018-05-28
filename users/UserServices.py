@@ -121,9 +121,9 @@ def subscriptionPost():
         print(response.status_code)
         print(response.body)
         print(response.headers)
-        return redirect(u"/#logon_successfull")
+        return redirect(url_root+"/#logon_successfull")
     else:
-        return redirect(u"/")
+        return redirect(url_root+"/")
 
 
 @users_page.route('/<user_id>/confirmation', methods=['GET'])
@@ -158,7 +158,7 @@ def confirmationSubscription(user_id):
     print(response.headers)
 
 
-    return redirect("/#user_detail/{}/?firstConnection=true".format(user_id))
+    return redirect(url_root+"/#user_detail/{}/?firstConnection=true".format(user_id))
 
 @users_page.route('/apiv1.0/login', methods=['POST'])
 def login():
