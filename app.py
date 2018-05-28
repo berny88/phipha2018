@@ -4,6 +4,8 @@ import sys
 import logging
 import logging.handlers
 from pymongo import MongoClient
+import sendgrid
+from sendgrid.helpers.mail import *
 
 print("start app.py")
 print(__name__)
@@ -84,6 +86,26 @@ def testmongo():
     logger.info(u'test mongo : {}'.format(props))
 
     return u"Test Mongo", 200
+
+@application.route('/testmail/')
+def testmail():
+    tool = ToolManager()
+    sg = tool.get_sendgrid()
+
+    api_key=tool.getProperty('SENDGRID_API_KEY')["value"]
+    logger.info("sendgrid={}".format(api_key))
+    sg = sendgrid.SendGridAPIClient(apikey=api_key)
+    from_email = Email("eurommxvi.foot@gmail.com")
+    to_email = Email("eurommxvi.foot@gmail.com")
+    subject = "Sending with SendGrid is Fun"
+    content = Content("text/html", "and <b>easy</h> to do anywhere, even with <h1>Python</h1>")
+    mail = Mail(from_email, subject, to_email, content)
+    response = sg.client.mail.send.post(request_body=mail.get())
+    print(response.status_code)
+    print(response.body)
+    print(response.headers)
+
+    return u"look at your email box : result="+str(response.status_code)+" - "+str(response.body), 200
 
 @application.errorhandler(404)
 def ma_page_404(error):
