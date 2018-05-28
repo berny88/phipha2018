@@ -107,7 +107,7 @@ def subscriptionPost():
         logger.info(u"\tsubscriptionPost::save done")
         tool_mgr = ToolManager()
         url_root = tool_mgr.getProperty("url_root")["value"]
-        urlcallback=u"http://{}/users/{}/confirmation".format(url_root, uuid)
+        urlcallback=u"{}/users/{}/confirmation".format(url_root, uuid)
         #message.set_html("<html><head></head><body><h1>MERCI DE</h1><h1><a href='{}'>Confirmer votre #inscription</a></h1></hr></body></html>".format(urlcallback))
 
         #sg.send(message)
