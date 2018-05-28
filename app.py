@@ -11,6 +11,7 @@ print("start app.py")
 print(__name__)
 
 application = flask.Flask(__name__)
+application.secret_key = u'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT#BB'
 
 from tools.Tools import ToolManager, tools_page
 from users.UserServices import users_page
