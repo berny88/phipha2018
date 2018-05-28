@@ -121,7 +121,7 @@ def subscriptionPost():
         print(response.status_code)
         print(response.body)
         print(response.headers)
-        return redirect(u"/#logon_successfull")
+        return redirect(url_for("/#logon_successfull",_scheme='https',_external=True))
     else:
         return redirect(u"/")
 
