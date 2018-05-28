@@ -37,7 +37,7 @@ print("Started...")
 application.logger.info('Started')
 ch = logging.StreamHandler(sys.stdout)
 ch.setLevel(logging.DEBUG)
-logging.basicConfig(filename='example.log',level=logging.DEBUG)
+logging.basicConfig(filename='betapp.log',level=logging.DEBUG)
 
 logger = logging.getLogger(__name__)
 logger.addHandler(ch)
