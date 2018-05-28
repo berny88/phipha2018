@@ -146,6 +146,7 @@ def confirmationSubscription(user_id):
 
     
     tool_mgr = ToolManager()
+    url_root = tool_mgr.getProperty("url_root")["value"]
     
     from_email = Email("eurommxvi.foot@gmail.com")
     to_email = Email(user.email)
