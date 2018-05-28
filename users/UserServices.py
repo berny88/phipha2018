@@ -91,13 +91,13 @@ def subscriptionPost():
     if user is None:
         tool = ToolManager()
         sg = tool.get_sendgrid()
-        message = sendgrid.Mail()
+        #message = sendgrid.Mail()
 
-        message.add_to(email)
+        #message.add_to(email)
 
-        message.add_to("eurommxvi.foot@gmail.com")
-        message.set_from("eurommxvi.foot@gmail.com")
-        message.set_subject("euroxxxvi - subscription")
+        #message.add_to("eurommxvi.foot@gmail.com")
+        #message.set_from("eurommxvi.foot@gmail.com")
+        #message.set_subject("euroxxxvi - subscription")
 
         uuid = str(uuid4())
         logger.info(u"subscriptionPost::user_id:{}".format(uuid))
@@ -108,7 +108,17 @@ def subscriptionPost():
         urlcallback=u"http://{}/users/{}/confirmation".format(url_root, uuid)
         message.set_html("<html><head></head><body><h1>MERCI DE</h1><h1><a href='{}'>Confirmer votre inscription</a></h1></hr></body></html>".format(urlcallback))
 
-        sg.send(message)
+        #sg.send(message)
+        
+        from_email = Email("eurommxvi.foot@gmail.com")
+        to_email = Email("eurommxvi.foot@gmail.com")
+        subject = "euroxxxvi - subscription"
+        content = Content("text/plain", "and easy to do anywhere, even with Python")
+        mail = Mail(from_email, subject, to_email, content)
+        response = sg.client.mail.send.post(request_body=mail.get())
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
         return redirect(u"/#logon_successfull")
     else:
         return redirect(u"/")

@@ -6,6 +6,7 @@ import re
 from flask import Blueprint, request, render_template, redirect, url_for
 from pymongo import MongoClient
 import sendgrid
+from sendgrid.helpers.mail import *
 
 
 logger = logging.getLogger(__name__)
@@ -122,11 +123,14 @@ class ToolManager(DbManager):
         search in  properties account to send email with sendgrid and return a sendclient
         :return the sendGrid objet to send email
         """
-        user = self.getProperty("send_grid_user")["value"]
-        pwd = self.getProperty("send_grid_pwd")["value"]
-        logger.info("sendgrid={}/{}".format(user, pwd))
-        sg = sendgrid.SendGridClient(user,
-                                     pwd)
+        #user = self.getProperty("send_grid_user")["value"]
+        #pwd = self.getProperty("send_grid_pwd")["value"]
+        #logger.info("sendgrid={}/{}".format(user, pwd))
+        #sg = sendgrid.SendGridClient(user,
+        #                             pwd)
+        api_key=self.getProperty('SENDGRID_API_KEY')["value"]
+        logger.info("sendgrid={}".format(api_key))
+        sg = sendgrid.SendGridAPIClient(apikey=api_key)
         return sg
 
 
