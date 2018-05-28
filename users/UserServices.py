@@ -3,6 +3,8 @@ from flask import Blueprint, jsonify, redirect, request, session
 import logging
 from uuid import uuid4
 import sendgrid
+from sendgrid.helpers.mail import *
+
 from tools.Tools import ToolManager
 from bson.binary import Binary
 from flask import send_file
@@ -111,7 +113,7 @@ def subscriptionPost():
         #sg.send(message)
         
         from_email = Email("eurommxvi.foot@gmail.com")
-        to_email = Email("eurommxvi.foot@gmail.com")
+        to_email = Email(email)
         subject = "euroxxxvi - subscription"
         content = Content("text/html", "<html><head></head><body><h1>MERCI DE</h1><h1><a href='{}'>Confirmer votre #inscription</a></h1></hr></body></html>".format(urlcallback))
         mail = Mail(from_email, subject, to_email, content)
@@ -136,25 +138,25 @@ def confirmationSubscription(user_id):
     tool = ToolManager()
     sg = tool.get_sendgrid()
 
-    message = sendgrid.Mail()
     mgr = UserManager()
     user = mgr.getUserByUserId(user_id)
     logger.info(u'confirmationSubscription::user={}'.format(user))
 
     mgr.saveUser(user.email, user.nickName, user.description, user.user_id, True, "")
 
-    message.add_to(user.email)
-
-    message.add_to("eurommxvi.foot@gmail.com")
-    message.set_from("eurommxvi.foot@gmail.com")
-    message.set_subject("euroxxxvi - confirmation")
+    
     tool_mgr = ToolManager()
-    url_root = tool_mgr.getProperty("url_root")["value"]
-    urlcallback = u"http://{}/".format(url_root)
+    
+    from_email = Email("eurommxvi.foot@gmail.com")
+    to_email = Email(user.email)
+    subject = "euroxxxvi - confirmation"
+    content = Content("text/html", "<html><head></head><body><h1><a href='{}'>Félicitations pour votre inscription ! </a></h1></hr></body></html>")
+    mail = Mail(from_email, subject, to_email, content)
+    response = sg.client.mail.send.post(request_body=mail.get())
+    print(response.status_code)
+    print(response.body)
+    print(response.headers)
 
-    message.set_html("<html><head></head><body><h1><a href='{}'>Félicitations pour votre inscription ! </a></h1></hr></body></html>".format(urlcallback))
-
-    sg.send(message)
 
     return redirect("/#user_detail/{}/?firstConnection=true".format(user_id))
 
