@@ -6,6 +6,7 @@ virtenv = os.environ['OPENSHIFT_PYTHON_DIR'] + '/virtenv/'
 virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
 docroot = os.environ['OPENSHIFT_REPO_DIR']
 datadir = os.environ['OPENSHIFT_DATA_DIR']
+environ['wsgi.url_scheme'] = 'https'
 try:
     # python 2 execfile(virtualenv, dict(__file__=virtualenv))
     # python 3
