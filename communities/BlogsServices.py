@@ -209,8 +209,8 @@ class BlogsManager(DbManager):
         urlBlog = "{}/#/blog_in_community/{}".format(url_root, com_id);
         url_to_bet = "{}/#/bet_in_community/{}".format(url_root, com_id);
         
-        for r in recipients:
-            message.add_to(r)
+        #for r in recipients:
+        #    message.add_to(r)
         logger.info("email title={}".format(blog.title))
         logger.info("email body-to_mail={}".format(blog.body_to_mail()))
         body = u"""<html><head></head><body><pre style='font-size: 16px;font-family:Verdana;'>{}</pre>
