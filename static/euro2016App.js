@@ -13,7 +13,7 @@ euro2016App.run(function($rootScope, $templateCache) {
 
 // create the controller and inject Angular's $scope
 euro2016App.controller('indexCtrl', function($scope, $window) {
-    $scope.message = 'EURO 2016';
+    $scope.message = 'FIFA 2018';
     $scope.comment = 'Amazing bet site';
 
     $scope.isConnected = function() {
@@ -32,7 +32,7 @@ euro2016App.controller('indexCtrl', function($scope, $window) {
 
     $scope.injectCounter = function() {
 
-        var startDateUTC = new Date('6/10/2016 19:00:00 UTC');
+        var startDateUTC = new Date('6/14/2018 15:00:00 UTC');
         $scope.startDateLocal = js_yyyy_mm_dd_hh_mm_ss(startDateUTC);
 
         // injection in HTML :
