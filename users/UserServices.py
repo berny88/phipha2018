@@ -107,7 +107,7 @@ def subscriptionPost():
         logger.info(u"\tsubscriptionPost::save done")
         tool_mgr = ToolManager()
         url_root = tool_mgr.getProperty("url_root")["value"]
-        urlcallback=u"{}/#users/{}/confirmation".format(url_root, uuid)
+        urlcallback=u"{}/users/{}/confirmation".format(url_root, uuid)
         #message.set_html("<html><head></head><body><h1>MERCI DE</h1><h1><a href='{}'>Confirmer votre #inscription</a></h1></hr></body></html>".format(urlcallback))
 
         #sg.send(message)
@@ -121,11 +121,9 @@ def subscriptionPost():
         print(response.status_code)
         print(response.body)
         print(response.headers)
-        return redirect(u"{}/#logon_successfull".format(url_root))
+        return redirect(u"/#logon_successfull")
     else:
-		tool_mgr = ToolManager()
-		url_root = tool_mgr.getProperty("url_root")["value"]
-        return redirect(u"{}/".format(url_root))
+        return redirect(u"/")
 
 
 @users_page.route('/<user_id>/confirmation', methods=['GET'])
