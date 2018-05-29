@@ -144,9 +144,7 @@ def confirmationSubscription(user_id):
 
     mgr.saveUser(user.email, user.nickName, user.description, user.user_id, True, "")
 
-    
-    tool_mgr = ToolManager()
-	url_root = tool_mgr.getProperty("url_root")["value"]
+	url_root = tool.getProperty("url_root")["value"]
     
     from_email = Email("eurommxvi.foot@gmail.com")
     to_email = Email(user.email)
