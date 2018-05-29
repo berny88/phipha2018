@@ -144,7 +144,7 @@ def confirmationSubscription(user_id):
 
     mgr.saveUser(user.email, user.nickName, user.description, user.user_id, True, "")
 
-	url_root = tool.getProperty("url_root")["value"]
+	url_root2 = tool.getProperty("url_root")["value"]
     
     from_email = Email("eurommxvi.foot@gmail.com")
     to_email = Email(user.email)
@@ -157,7 +157,7 @@ def confirmationSubscription(user_id):
     print(response.headers)
 
 
-    return redirect("{}/#user_detail/{}/?firstConnection=true".format(url_root,user_id))
+    return redirect(u"{}/#user_detail/{}/?firstConnection=true".format(url_root2,user_id))
 
 @users_page.route('/apiv1.0/login', methods=['POST'])
 def login():
