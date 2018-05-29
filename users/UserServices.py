@@ -90,10 +90,6 @@ def subscriptionPost():
 
     mgr = UserManager()
     user = mgr.getUserByEmail(email)
-	
-	tool_mgr = ToolManager()
-	url_root = tool_mgr.getProperty("url_root")["value"]
-	
     if user is None:
         tool = ToolManager()
         sg = tool.get_sendgrid()
@@ -109,7 +105,8 @@ def subscriptionPost():
         logger.info(u"subscriptionPost::user_id:{}".format(uuid))
         mgr.saveUser(email, "", "", uuid, False, "")
         logger.info(u"\tsubscriptionPost::save done")
-
+        tool_mgr = ToolManager()
+        url_root = tool_mgr.getProperty("url_root")["value"]
         urlcallback=u"{}/#users/{}/confirmation".format(url_root, uuid)
         #message.set_html("<html><head></head><body><h1>MERCI DE</h1><h1><a href='{}'>Confirmer votre #inscription</a></h1></hr></body></html>".format(urlcallback))
 
@@ -124,9 +121,11 @@ def subscriptionPost():
         print(response.status_code)
         print(response.body)
         print(response.headers)
-        return redirect(u"{}/#logon_successfull".format(url_root))
+        return redirect(u"/#logon_successfull".format(url_root))
     else:
-        return redirect(u"{}/".format(url_root))
+		tool_mgr = ToolManager()
+		url_root = tool_mgr.getProperty("url_root")["value"]
+        return redirect(u"/".format(url_root))
 
 
 @users_page.route('/<user_id>/confirmation', methods=['GET'])
