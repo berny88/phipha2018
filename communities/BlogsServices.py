@@ -2,6 +2,8 @@
 import logging
 from uuid import uuid4
 import sendgrid
+from sendgrid.helpers.mail import *
+
 from tools.Tools import ToolManager
 
 from tools.Tools import DbManager, BetProjectClass
