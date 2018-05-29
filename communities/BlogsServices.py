@@ -216,19 +216,31 @@ class BlogsManager(DbManager):
         body = u"""<html><head></head><body><pre style='font-size: 16px;font-family:Verdana;'>{}</pre>
         <br/><h2>Laissez vos commentaires ici : {}</h2>
         <br/><h1>Et, surtout n'oubiez pas de parier: {}</h1></body></html>""".format(blog.body_to_mail(), urlBlog, url_to_bet)
-        
-        mail = Mail()
-        mail.set_from(Email("eurommxvi.foot@gmail.com", "Example User"))
-        mail.set_subject(blog.title)
+        try:
+            mail = Mail()
+            mail.from_email = Email("eurommxvi.foot@gmail.com", "xx")
+            mail.subject = blog.title
 
-        personalization = Personalization()
-        for r in recipients:
-            personalization.add_bcc(Email(r, r))
-        mail.add_personalization(personalization)
+            personalization = Personalization()
+            for r in recipients:
+                logger.debug(r)
+                personalization.add_bcc(Email(r))
+            personalization.subject = "Hello World from the Personalized SendGrid Python Library"
 
-        mail.add_content(Content("text/plain", body))
-        mail.add_content(Content("text/html", body))
-        response = sg.client.mail.send.post(request_body=data)
+            mail.add_personalization(personalization)
+
+            mail.add_content(Content("text/plain", body))
+            mail.add_content(Content("text/html", body))
+            response = sg.client.mail.send.post(request_body=mail.get())
+            logger.debug(response)
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
+
+            # Bloc de test
+        except RuntimeError as err:
+            print ("Unexpected error:", err)
+            raise
 
         logger.debug("email result={}/{}".format(str(res[0]), str(res[1])))
 
