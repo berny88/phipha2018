@@ -372,14 +372,14 @@ class BetsManager(DbManager):
         ranking = dict()
         ranking["nbPoints"] = int(nbPointsTot / len(comList))
         # Pour exprimer le nb de pt en % du nb de point total possible :
-        #   36 = nb de match au total en poule, 15 = nb de match au total en phase finale, et 51 = nb match total
+        #   48 = nb de match au total en poule, 16 = nb de match au total en phase finale, et 64 = nb match total
         #   13 = nb de pt max par match
         if category == "ALL" or category is None or category == "undefined":
-            nbMaxMatchs= 51
+            nbMaxMatchs= 64
         elif category == "GROUPE":
-            nbMaxMatchs = 36
+            nbMaxMatchs = 48
         elif category == "FINAL":
-            nbMaxMatchs = 15
+            nbMaxMatchs = 16
         ranking["nbPointsPercent"] = int((ranking["nbPoints"] * 100) / (nbMaxMatchs * 13))
         ranking["user"] = user
         ranking["communities"] = communitiesTab
