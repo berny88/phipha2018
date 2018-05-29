@@ -3,7 +3,7 @@
 
         <div class="row">
             <div class="col-xs-12">
-                <input type="submit" ng-show="displaySaveButton" class="btn btn-success pull-right" value="Sauvegarder les paris">
+                <input type="submit" ng-show="displaySaveButton" class="btn btn-success pull-right" value="Save the bets">
             </div>
         </div>
 
@@ -13,12 +13,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            Phase de poule
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Group phase
                         </a>
                     </h4>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
 
                         <div id="no-more-tables" class="table-responsive">
@@ -32,7 +32,7 @@
                                             <span ng-show="sortType=='dateMatch' && sortReverse" class="glyphicon glyphicon-chevron-up"></span></a>
                                     </th>
                                     <th class="categoryName">
-                                        <a ng-click="sortType='categoryName';sortReverse=!sortReverse">Groupe
+                                        <a ng-click="sortType='categoryName';sortReverse=!sortReverse">Group
                                             <span ng-show="sortType=='categoryName'&&!sortReverse" class="glyphicon glyphicon-chevron-down"></span>
                                             <span ng-show="sortType=='categoryName' && sortReverse" class="glyphicon glyphicon-chevron-up"></span></a>
                                     </th>
@@ -82,12 +82,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                            Phase finale
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Knockout phase
                         </a>
                     </h4>
                 </div>
-                <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
 
                         <div id="no-more-tables" class="table-responsive">
@@ -101,7 +101,7 @@
                                             <span ng-show="sortType=='dateMatch' && sortReverse" class="glyphicon glyphicon-chevron-up"></span></a>
                                     </th>
                                     <th class="categoryName">
-                                        <a ng-click="sortType='categoryName';sortReverse=!sortReverse">Groupe
+                                        <a ng-click="sortType='categoryName';sortReverse=!sortReverse">Group
                                             <span ng-show="sortType=='categoryName'&&!sortReverse" class="glyphicon glyphicon-chevron-down"></span>
                                             <span ng-show="sortType=='categoryName' && sortReverse" class="glyphicon glyphicon-chevron-up"></span></a>
                                     </th>
@@ -149,7 +149,7 @@
             </div>
         </div>
 
-        <input type="submit" ng-show="displaySaveButton" class="btn btn-success pull-right" value="Sauvegarder les paris">
+        <input type="submit" ng-show="displaySaveButton" class="btn btn-success pull-right" value="Save the bets">
 
     </form>
 

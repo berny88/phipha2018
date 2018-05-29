@@ -11,8 +11,8 @@ euro2016App.directive('customPopover', function ($http,$timeout) {
                         $(el).popover({
                             trigger: 'focus',
                             html:true,
-                            title: 'Côte du match',
-                            content: '<table><tr><td>Nombre de parieurs</td><td>: '+data.rates.nbBets +'</td></tr><tr><td>TeamA vainqueur</td><td>: '+data.rates.winnerAPercent+'%</td></tr>'+'<tr><td>Match nul</td><td>: '+data.rates.drawPercent+'%</td></tr>'+'<tr><td>TeamB vainqueur</td><td>: '+data.rates.winnerBPercent+'%</td></tr></table>',
+                            title: 'Match odds',
+                            content: '<table><tr><td>Number of players</td><td>: '+data.rates.nbBets +'</td></tr><tr><td>TeamA winner</td><td>: '+data.rates.winnerAPercent+'%</td></tr>'+'<tr><td>Draw</td><td>: '+data.rates.drawPercent+'%</td></tr>'+'<tr><td>TeamB winner</td><td>: '+data.rates.winnerBPercent+'%</td></tr></table>',
                             placement: attrs.popoverPlacement});
                         $(el).popover('show');
 
@@ -108,7 +108,7 @@ euro2016App.controller('BetsCtrl', ['$scope', '$routeParams', '$http', '$q', '$l
             $http.put('communities/apiv1.0/communities/'+ $routeParams.com_id + '/users/'+ getConnectedUser($window).user_id +'/bets ', {bets: $scope.bets.bets, timeout: canceler.promise})
             .success(function(data, status, headers, config) {
                 //showAlertSuccess("Paris sauvegardés !");
-                $.notify("Paris sauvegardés !" , "success");
+                $.notify("Bets saved !" , "success");
             })
             .error(function(data, status, headers, config) {
                 if (status==403){
