@@ -209,115 +209,23 @@ class BlogsManager(DbManager):
         urlBlog = "{}/#/blog_in_community/{}".format(url_root, com_id);
         url_to_bet = "{}/#/bet_in_community/{}".format(url_root, com_id);
         
-        #for r in recipients:
-        #    message.add_to(r)
         logger.info("email title={}".format(blog.title))
         logger.info("email body-to_mail={}".format(blog.body_to_mail()))
         body = u"""<html><head></head><body><pre style='font-size: 16px;font-family:Verdana;'>{}</pre>
         <br/><h2>Laissez vos commentaires ici : {}</h2>
         <br/><h1>Et, surtout n'oubiez pas de parier: {}</h1></body></html>""".format(blog.body_to_mail(), urlBlog, url_to_bet)
         
-        data = {
-          "asm": {
-            "group_id": 1, 
-            "groups_to_display": [
-              1, 
-              2, 
-              3
-            ]
-          }, 
-          "content": [
-            {
-              "type": "text/html", 
-              "value": "<html><p>Hello, world!</p><img src=[CID GOES HERE]></img></html>"
-            }
-          ], 
-          "custom_args": {
-            "New Argument 1": "New Value 1", 
-            "activationAttempt": "1", 
-            "customerAccountNumber": "[CUSTOMER ACCOUNT NUMBER GOES HERE]"
-          }, 
-          "from": {
-            "email": "eurommxvi.foot@gmail.com", 
-            "name": "Franck Underwood"
-          }, 
-          "headers": {}, 
-          "mail_settings": {
-            "bcc": {
-              "email": "eurommxvi.foot@gmail.com", 
-              "enable": True
-            }, 
-            "bypass_list_management": {
-              "enable": True
-            }, 
-            "footer": {
-              "enable": True, 
-              "html": "<p>Thanks</br>The SendGrid Team</p>", 
-              "text": "Thanks,/n The SendGrid Team"
-            }, 
-            "sandbox_mode": {
-              "enable": False
-            }, 
-            "spam_check": {
-              "enable": True, 
-              "post_to_url": "http://example.com/compliance", 
-              "threshold": 3
-            }
-          }, 
-          "personalizations": [
-            {
-              "cc": [
-                {
-                  "email": "eurommxvi.foot@gmail.com", 
-                  "name": "Jane Doe"
-                }
-              ], 
-              "custom_args": {
-                "New Argument 1": "New Value 1", 
-                "activationAttempt": "1", 
-                "customerAccountNumber": "[CUSTOMER ACCOUNT NUMBER GOES HERE]"
-              }, 
-              "headers": {
-                "X-Accept-Language": "en", 
-                "X-Mailer": "MyApp"
-              }, 
-              "send_at": 1409348513, 
-              "subject": "eurommxvi : {}".format(blog.title), 
-              "substitutions": {
-                "id": "substitutions", 
-                "type": "object"
-              }, 
-              "to": [
-                {
-                  "email": "eurommxvi.foot@gmail.com", 
-                  "name": "John Doe"
-                }
-              ]
-            }
-          ], 
-          "reply_to": {
-            "email": "eurommxvi.foot@gmail.com", 
-            "name": "Sam Smith"
-          }, 
-          "subject": "Hello, World!", 
-          "template_id": "[YOUR TEMPLATE ID GOES HERE]", 
-          "tracking_settings": {
-            "click_tracking": {
-              "enable": False, 
-              "enable_text": True
-            }, 
-            "open_tracking": {
-              "enable": False, 
-              "substitution_tag": "%opentrack"
-            }, 
-            "subscription_tracking": {
-              "enable": False, 
-              "html": "If you would like to unsubscribe and stop receiving these emails <% clickhere %>.", 
-              "substitution_tag": "<%click here%>", 
-              "text": "If you would like to unsubscribe and stop receiveing these emails <% click here %>."
-            }
-          }
-        }
+        mail = Mail()
+        mail.set_from(Email("eurommxvi.foot@gmail.com", "Example User"))
+        mail.set_subject(blog.title)
+
+        personalization = Personalization()
+        for r in recipients:
+            personalization.add_bcc(Email(r, r))
+        mail.add_personalization(personalization)
+
+        mail.add_content(Content("text/plain", body))
+        mail.add_content(Content("text/html", body))
         response = sg.client.mail.send.post(request_body=data)
 
         logger.debug("email result={}/{}".format(str(res[0]), str(res[1])))
