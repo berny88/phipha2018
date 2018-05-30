@@ -214,8 +214,8 @@ class BlogsManager(DbManager):
         logger.info("email title={}".format(blog.title))
         logger.info("email body-to_mail={}".format(blog.body_to_mail()))
         body = u"""<html><head></head><body><pre style='font-size: 16px;font-family:Verdana;'>{}</pre>
-        <br/><h2>Laissez vos commentaires ici : {}</h2>
-        <br/><h1>Et, surtout n'oubiez pas de parier: {}</h1></body></html>""".format(blog.body_to_mail(), urlBlog, url_to_bet)
+        <br/><h2>Leave your comments here : {}</h2>
+        <br/><h1>And don't forget to bet: {}</h1></body></html>""".format(blog.body_to_mail(), urlBlog, url_to_bet)
         try:
             mail = Mail()
             mail.from_email = Email("eurommxvi.foot@gmail.com", "xx")
