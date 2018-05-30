@@ -121,7 +121,7 @@ def subscriptionPost():
         print(response.status_code)
         print(response.body)
         print(response.headers)
-        return redirect(u"/#logon_successfull")
+        return redirect("{}/#logon_successfull".format(url_root))
     else:
         return redirect(u"/")
 
@@ -146,6 +146,7 @@ def confirmationSubscription(user_id):
 
     
     tool_mgr = ToolManager()
+    url_root = tool_mgr.getProperty("url_root")["value"]
     
     from_email = Email("eurommxvi.foot@gmail.com")
     to_email = Email(user.email)
@@ -158,7 +159,7 @@ def confirmationSubscription(user_id):
     print(response.headers)
 
 
-    return redirect("/#user_detail/{}/?firstConnection=true".format(user_id))
+    return redirect("{}/#user_detail/{}/?firstConnection=true".format(url_root,user_id))
 
 @users_page.route('/apiv1.0/login', methods=['POST'])
 def login():
