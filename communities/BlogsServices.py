@@ -173,7 +173,7 @@ class BlogsManager(DbManager):
             blog.comments.append(comment)
             blogBson = blog.convertIntoJson()
             id = localdb.blogs.update({"blog_id": blog.blog_id, "com_id":blog.com_id},
-                                        {"$set": {"comments": blogBson["comments"]}}, upsert=True)
+                                      {"$set": {"comments": blogBson["comments"]}}, upsert=True)
 
         return 1
 
@@ -210,30 +210,38 @@ class BlogsManager(DbManager):
 
         urlBlog = "{}/#/blog_in_community/{}".format(url_root, com_id);
         url_to_bet = "{}/#/bet_in_community/{}".format(url_root, com_id);
-        
+
         logger.info("email title={}".format(blog.title))
         logger.info("email body-to_mail={}".format(blog.body_to_mail()))
         body = u"""<html><head></head><body><pre style='font-size: 16px;font-family:Verdana;'>{}</pre>
         <br/><h2>Leave your comments here : {}</h2>
         <br/><h1>And don't forget to bet: {}</h1></body></html>""".format(blog.body_to_mail(), urlBlog, url_to_bet)
         try:
-            from_email = Email("eurommxvi.foot@gmail.com", "xx")
-            content = Content("text/html", body)
-    
-            mail = Mail(from_email, blog.title, from_email, content)
-            
+            mail = Mail()
+            mail.from_email = Email("eurommxvi.foot@gmail.com", "xx")
+            mail.subject = blog.title
+
+            personalization = Personalization()
             for r in recipients:
                 logger.debug(r)
-                mail.personalizations[0].add_to(Email(r))
-                
+                personalization.add_bcc(Email(r))
+            personalization.subject = "Hello World from the Personalized SendGrid Python Library"
+
+            mail.add_personalization(personalization)
+
+            mail.add_content(Content("text/plain", body))
+            mail.add_content(Content("text/html", body))
             response = sg.client.mail.send.post(request_body=mail.get())
-            logger.debug(response.status_code)
-            logger.debug(response.body)
-            logger.debug(response.headers)
+            logger.debug(response)
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
 
             # Bloc de test
         except RuntimeError as err:
             print ("Unexpected error:", err)
             raise
 
-        return response
+        logger.debug("email result={}/{}".format(str(res[0]), str(res[1])))
+
+        return res
