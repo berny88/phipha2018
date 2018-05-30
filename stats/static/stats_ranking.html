@@ -1,15 +1,15 @@
 <div class="container">
 
-    <h1>Classement des parieurs</h1>
+    <h1>Bettor Ranking</h1>
     <br/>
-    <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign"></span> Lorsqu'un parieur a parié dans plusieurs communautés, c'est la moyenne de ses points qui est prise en compte</div>
+    <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign"></span> When a bettor has bet in several communities, the average of his points is taken into account.</div>
 
     <div class="alert alert-success" role="alert">
-        Faites votre choix :
+        Your choice :
         <div class="btn-group" role="group" aria-label="...">
-            <button id="btn-groupe" type="button" class="btn btn-success" ng-click="getRanking('GROUPE');">Classement des poules</button>
-            <button id="btn-final" type="button" class="btn btn-success active" ng-click="getRanking('FINAL');">Classement de la phase finale</button>
-            <button id="btn-all" type="button" class="btn btn-success" ng-click="getRanking('ALL');">Classement global</button>
+            <button id="btn-groupe" type="button" class="btn btn-success active" ng-click="getRanking('GROUPE');">Ranking of the group phase</button>
+            <button id="btn-final" type="button" class="btn btn-success" ng-click="getRanking('FINAL');">Ranking of the knockout phase</button>
+            <button id="btn-all" type="button" class="btn btn-success" ng-click="getRanking('ALL');">Overall ranking</button>
         </div>
     </div>
 
@@ -42,4 +42,4 @@
 
 </div>
 
-<div ng-include src="'static/js/piwik.js'"></div>
+<!--<div ng-include src="'static/js/piwik.js'"></div>-->
