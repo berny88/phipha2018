@@ -1,6 +1,6 @@
 <div class="container" ng-controller="ChatCtrl">
-    <h2>Le Mur</h2>
-    <h4>Laissez votre message !</h4>
+    <h2>The wall</h2>
+    <h4>Leave your message !</h4>
     <hr>
 
     <form ng-submit="doPost()" ng-init="getPosts();">
@@ -27,7 +27,7 @@
             </div>
 
             <div ng-show="!isConnected()">
-                <h4 class="text-center">Vous devez être connectés pour poster des messages. Par <a href="#signin?callback=contact">ici</a>.</h4>
+                <h4 class="text-center">You must be logged in to post messages : <a href="#signin?callback=contact">here</a>.</h4>
             </div>
 
             <div class="clearfix"></div>

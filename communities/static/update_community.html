@@ -2,7 +2,7 @@
     <div class="panel-heading">
         <h4 class="panel-title">
             <div class="pull-left">
-                <h4>Modification d'une communauté</h4>
+                <h4>Update a community</h4>
             </div>
             <div class="pull-right"></div>
             <div class="clearfix"></div>
@@ -17,9 +17,9 @@
                 </div>
             </div>  -->
     		<div class="form-group required">
-                <label class="control-label col-xs-3" for="title">Titre:</label>
+                <label class="control-label col-xs-3" for="title">Title:</label>
                 <div class="col-xs-9">
-                    <input ng-model="community.community.title" type="text" class="form-control" id="title" placeholder="Titre" required="required">
+                    <input ng-model="community.community.title" type="text" class="form-control" id="title" placeholder="Title" required="required">
                 </div>
             </div>     
             <div class="form-group">
@@ -32,7 +32,7 @@
             <div class="form-group">
                 <div class="col-xs-offset-3 col-xs-9">
                     <input type="submit" class="btn btn-success" value="Modifier la communauté">
-                    <a href="javascript:history.back()">Retour</a>
+                    <a href="javascript:history.back()">Back</a>
                 </div>
             </div>
         </form>
@@ -85,19 +85,19 @@
                                             <div class="btn-group" role="group" aria-label="...">
                                                 <button type="button" class="btn btn-info glyphicon glyphicon-resize-small"
                                                         ng-click="selectTab('CommunitiesCtrl')">
-                                                    Revoir tous les posts&nbsp;
+                                                    See all the posts again&nbsp;
                                                 </button>
                                                 <button type="button" class="btn btn-warning glyphicon glyphicon-envelope"
                                                         ng-click="sendEmailToAll(post)">
-                                                    Renvoyer mail à tous&nbsp;
+                                                    Re-send mail to all&nbsp;
                                                 </button>
                                                 <button type="button" class="btn btn-success glyphicon glyphicon-envelope"
                                                         ng-click="sendEmailToMe(post)">
-                                                    Renvoyer mail à moi seulement&nbsp;
+                                                    Re-send mail to me only&nbsp;
                                                 </button>
                                                 <button type="button" class="btn btn-danger glyphicon glyphicon-remove-sign"
                                                         ng-click="deletePost($index)">
-                                                    Supprimer&nbsp;
+                                                    Delete&nbsp;
                                                 </button>
                                             </div>
                                         </div>
@@ -115,7 +115,7 @@
                                 </div>
                             </div>
                             <div class="post" ng-show="isSelected('new')">
-                                <h2>Nouveau Post</h2>
+                                <h2>New Post</h2>
 
                                 <form name="postForm" ng-submit="addPost()" class="form-horizontal">
                                     <div class="form-group required">
@@ -136,15 +136,15 @@
                                     <div class="radio">
                                         <label>
                                             <input type="radio" name="emailOpt" id="emailOptNone" value="none" ng-model="post.emailOpt">
-                                            Pas d'envoi de mail
+                                            No mail
                                         </label>
                                         <label>
                                             <input type="radio" name="emailOpt" id="emailOptMe" value="me" ng-model="post.emailOpt">
-                                            Envoi email à moi seulement
+                                            Send email to me only
                                         </label>
                                         <label>
                                             <input type="radio" name="emailOpt" id="emailOptAll" value="all" ng-model="post.emailOpt">
-                                            Envoi email à tous (donc moi)
+                                            Send email to all (me as well)
                                         </label>
                                     </div>
                                     <input type="submit" ng-show="displayBlogPostSaveButton"
@@ -163,4 +163,4 @@
     </div>
 </div>
 
-<div ng-include src="'static/js/piwik.js'"></div>
+<!--<div ng-include src="'static/js/piwik.js'"></div>-->

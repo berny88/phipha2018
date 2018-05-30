@@ -1,12 +1,12 @@
 ﻿<div class="jumbotron" ng-init="getCommunity()">
     <div class="container">
-        <a href="javascript:history.back()">Retour</a>
+        <a href="javascript:history.back()">Back</a>
         <br/>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <div class="pull-left">
-                        <h4>Informations sur la communauté</h4>
+                        <h4>Informations about the community</h4>
                     </div>
                     <div class="pull-right"></div>
                     <div class="clearfix"></div>
@@ -42,7 +42,7 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <div class="pull-left">
-                                <h4>Parieurs</h4>
+                                <h4>Bettors</h4>
                             </div>
                             <div class="pull-right"></div>
                             <div class="clearfix"></div>
@@ -55,7 +55,7 @@
 
                                 <tbody ng-init="getPlayersInCommunity();">
                                 <tr ng-repeat="player in players.data.players | orderBy:sortType:sortReverse">
-                                    <td data-title="Parieur"><img height="32px" width="32px" class="img-circle" ng-src ="users/apiv1.0/users/{{ player.user_id }}/avatar?{{ currentDateForAvoidTheCache }}" > {{player.nickName}}</td>
+                                    <td data-title="Bettor"><img height="32px" width="32px" class="img-circle" ng-src ="users/apiv1.0/users/{{ player.user_id }}/avatar?{{ currentDateForAvoidTheCache }}" > {{player.nickName}}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -69,7 +69,7 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <div class="pull-left">
-                                <h4>Vos paris</h4>
+                                <h4>Your bets</h4>
                             </div>
                             <div class="pull-right"></div>
                             <div class="clearfix"></div>
@@ -80,16 +80,16 @@
                             <div ng-include src="'bets/static/bets.html'"></div>
                         </div>
                         <div ng-show="!isConnected()">
-                            <h4 class="text-center">Vous devez être connectés pour parier. Par <a href="#signin?callback=bet_in_community/{{community.community.com_id}}">ici</a>.</h4>
+                            <h4 class="text-center">You must be logged in to post messages : <a href="#signin?callback=bet_in_community/{{community.community.com_id}}">here</a>.</h4>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <a href="javascript:history.back()">Retour</a>
+        <a href="javascript:history.back()">Back</a>
 
     </div>
 </div>
 
-<div ng-include src="'static/js/piwik.js'"></div>
+<!--<div ng-include src="'static/js/piwik.js'"></div>-->

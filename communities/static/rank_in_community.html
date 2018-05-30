@@ -8,9 +8,9 @@
                 </div>
             </div>  -->
     		<div class="form-group">
-                <label class="control-label col-xs-3" for="title">Titre:</label>
+                <label class="control-label col-xs-3" for="title">Title:</label>
                 <div class="col-xs-9">
-                    <input ng-model="community.community.title" type="text" class="form-control" id="title" placeholder="Titre" readonly="readonly">
+                    <input ng-model="community.community.title" type="text" class="form-control" id="title" placeholder="Title" readonly="readonly">
                 </div>
             </div>     
             <div class="form-group">
@@ -23,8 +23,8 @@
 
         <a href="javascript:history.back()">Retour</a><br/><br/>
         <span><a class="btn btn-warning" href="#bets_of_the_day_in_community/{{community.community.com_id}}"><i class="glyphicon glyphicon-fire" aria-hidden="true"></i> Hot !</a></span>
-        <span><a class="btn btn-danger" ng-href="#bet_in_community/{{community.community.com_id}}"><i class="glyphicon glyphicon-stats"></i> Pariez !</a></span>
-        <span><a class="btn btn-success" ng-href="#bets_in_community/{{community.community.com_id}}"><i class="fa fa-line-chart" aria-hidden="true"></i> Tous les paris</a></span>
+        <span><a class="btn btn-danger" ng-href="#bet_in_community/{{community.community.com_id}}"><i class="glyphicon glyphicon-stats"></i> Bet !</a></span>
+        <span><a class="btn btn-success" ng-href="#bets_in_community/{{community.community.com_id}}"><i class="fa fa-line-chart" aria-hidden="true"></i> All the bets !</a></span>
         </form>
 
 
@@ -40,7 +40,7 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <div class="pull-left">
-                                            <h4>Classement de la communauté</h4>
+                                            <h4>Ranking of the community</h4>
                                         </div>
                                         <div class="pull-right"></div>
                                         <div class="clearfix"></div>
@@ -50,9 +50,9 @@
                                     <div class="alert alert-success" role="alert">
                                         Faites votre choix :
                                         <div class="btn-group" role="group" aria-label="...">
-                                            <button id="btn-groupe" type="button" class="btn btn-success" ng-click="getRankingInCommunity('GROUPE')">Classement des poules</button>
-                                            <button id="btn-final" type="button" class="btn btn-success active" ng-click="getRankingInCommunity('FINAL');">Classement de la phase finale</button>
-                                            <button id="btn-all" type="button" class="btn btn-success" ng-click="getRankingInCommunity('ALL');">Classement global</button>
+                                            <button id="btn-groupe" type="button" class="btn btn-success" ng-click="getRankingInCommunity('GROUPE')">Ranking of the group phase</button>
+                                            <button id="btn-final" type="button" class="btn btn-success active" ng-click="getRankingInCommunity('FINAL');">Ranking of the knockout phase</button>
+                                            <button id="btn-all" type="button" class="btn btn-success" ng-click="getRankingInCommunity('ALL');">Overall ranking</button>
                                         </div>
                                     </div>
                                     <br/>
@@ -72,7 +72,7 @@
                                         </div>
                                     </div>
                                     <center><span id="spinRanking"><img src="static/img/spin.gif"></span></center>
-                                    <center><a href="#stats_ranking"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Classement général</a></center>
+                                    <center><a href="#stats_ranking"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Global ranking</a></center>
                                 </div>
                             </div>
                         </div>
@@ -88,4 +88,4 @@
     </div>
 </div>
 
-<div ng-include src="'static/js/piwik.js'"></div>
+<!--<div ng-include src="'static/js/piwik.js'"></div>-->

@@ -8,9 +8,9 @@
                 </div>
             </div>  -->
     		<div class="form-group">
-                <label class="control-label col-xs-3" for="title">Titre:</label>
+                <label class="control-label col-xs-3" for="title">Title:</label>
                 <div class="col-xs-9">
-                    <input ng-model="community.community.title" type="text" class="form-control" id="title" placeholder="Titre" readonly="readonly">
+                    <input ng-model="community.community.title" type="text" class="form-control" id="title" placeholder="Title" readonly="readonly">
                 </div>
             </div>     
             <div class="form-group">
@@ -23,10 +23,10 @@
 
         <br>
 
-        <a href="javascript:history.back()">Retour</a><br/><br/>
+        <a href="javascript:history.back()">Back</a><br/><br/>
         <span><a class="btn btn-warning" href="#bets_of_the_day_in_community/{{community.community.com_id}}"><i class="glyphicon glyphicon-fire" aria-hidden="true"></i> Hot !</a></span>
-        <span><a class="btn btn-danger" ng-href="#bet_in_community/{{community.community.com_id}}"><i class="glyphicon glyphicon-stats"></i> Pariez !</a></span>
-        <span><a class="btn btn-success" ng-href="#rank_in_community/{{community.community.com_id}}"><i class="fa fa-line-chart" aria-hidden="true"></i> Classement</a></span>
+        <span><a class="btn btn-danger" ng-href="#bet_in_community/{{community.community.com_id}}"><i class="glyphicon glyphicon-stats"></i> Bet !</a></span>
+        <span><a class="btn btn-success" ng-href="#rank_in_community/{{community.community.com_id}}"><i class="fa fa-line-chart" aria-hidden="true"></i> Ranking</a></span>
 
         <br/>
 
@@ -39,7 +39,7 @@
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <div class="pull-left">
-                                    <h4>Les paris (des matchs clos)</h4>
+                                    <h4>Betting (closed matches)</h4>
                                 </div>
                                 <div class="pull-right"></div>
                                 <div class="clearfix"></div>
@@ -48,11 +48,11 @@
                         <div class="panel-body" ng-init="getRankingInCommunity('FINAL')">
 
                             <div class="alert alert-success" role="alert">
-                                Faites votre choix :
+                                Your choice :
                                 <div class="btn-group" role="group" aria-label="...">
-                                    <button id="btn-groupe" type="button" class="btn btn-success" ng-click="getRankingInCommunity('GROUPE')">Paris des poules</button>
-                                    <button id="btn-final" type="button" class="btn btn-success active" ng-click="getRankingInCommunity('FINAL');">Paris de la phase finale</button>
-                                    <button id="btn-all" type="button" class="btn btn-success" ng-click="getRankingInCommunity('ALL');">Paris globaux</button>
+                                    <button id="btn-groupe" type="button" class="btn btn-success active" ng-click="getRankingInCommunity('GROUPE')">Bets of the group phase</button>
+                                    <button id="btn-final" type="button" class="btn btn-success" ng-click="getRankingInCommunity('FINAL');">Bets of the knockout phase</button>
+                                    <button id="btn-all" type="button" class="btn btn-success" ng-click="getRankingInCommunity('ALL');">Overall bets</button>
                                 </div>
                             </div>
                             <center><span id="spinRanking"><img src="static/img/spin.gif"></span></center>
@@ -94,4 +94,4 @@
     </div>
 </div>
 
-<div ng-include src="'static/js/piwik.js'"></div>
+<!--<div ng-include src="'static/js/piwik.js'"></div>-->

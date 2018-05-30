@@ -3,9 +3,9 @@
     <div class="jumbotron" >
       <form action="/users/subscription" method="POST">
         <div class="form-group required">
-            <h1><span class=" glyphicon glyphicon-thumbs-up"></span> Vous avez fait le bon choix !</h1>
+            <h1><span class=" glyphicon glyphicon-thumbs-up"></span> You made the right choice !</h1>
 
-          <label for="email" class="control-label">Saisissez votre adresse email pour vous inscrire (un email de confirmation vous sera envoyé dans quelques secondes)</label>
+            <label for="email" class="control-label">Enter your email address to register (a confirmation email will be sent to you in a few seconds). <b>Please check your spam</b></label>
           <input type="email" class="form-control" id="email" name="email"
               placeholder="Votre email" value="" required="required">
           <script>
@@ -15,11 +15,11 @@
           </script>
         </div>
         <button type="submit" id="submit" name="submit" value="Sign in"
-          class="btn btn-primary btn-lg">Inscrivez-vous !</button>
-          <a class="btn" href="#accueil">Retour</a>
+          class="btn btn-primary btn-lg">Sign up now !</button>
+          <a class="btn" href="#accueil">Back</a>
       </form>
     </div>
   </div>
 
-  <div ng-include src="'static/js/piwik.js'"></div>
+  <!--<div ng-include src="'static/js/piwik.js'"></div>-->
 

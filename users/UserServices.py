@@ -114,8 +114,8 @@ def subscriptionPost():
         
         from_email = Email("eurommxvi.foot@gmail.com")
         to_email = Email(email)
-        subject = "euroxxxvi - subscription"
-        content = Content("text/html", "<html><head></head><body><h1>MERCI DE</h1><h1><a href='{}'>Confirmer votre #inscription</a></h1></hr></body></html>".format(urlcallback))
+        subject = "phipha2018 - subscription"
+        content = Content("text/html", "<html><head></head><body><h1>Please</h1><h1><a href='{}'> confirm your subscription</a></h1></hr></body></html>".format(urlcallback))
         mail = Mail(from_email, subject, to_email, content)
         response = sg.client.mail.send.post(request_body=mail.get())
         print(response.status_code)
@@ -150,8 +150,8 @@ def confirmationSubscription(user_id):
     
     from_email = Email("eurommxvi.foot@gmail.com")
     to_email = Email(user.email)
-    subject = "euroxxxvi - confirmation"
-    content = Content("text/html", "<html><head></head><body><h1><a href='{}'>Félicitations pour votre inscription ! </a></h1></hr></body></html>")
+    subject = "phipha2018 - confirmation"
+    content = Content("text/html", "<html><head></head><body><h1><a href='{}'>Congratulations on your registration ! </a></h1></hr></body></html>")
     mail = Mail(from_email, subject, to_email, content)
     response = sg.client.mail.send.post(request_body=mail.get())
     print(response.status_code)
@@ -211,9 +211,9 @@ def saveAvatar(user_id):
                 avatarId = mgr.saveAvatar(user_id, data)
                 return "Yes !", 200
             else:
-                return "Taille du fichier ("+str(len(data))+" ko) supérieure à 500 Ko", 415
+                return "Size of the file ("+str(len(data))+" ko) more than 500 Ko", 415
         else:
-            return "Type de fichier non supporté (jpg/jpeg obligatoire)", 413
+            return "Non supported file (jpg/jpeg mandatory)", 413
     else:
         return "Ha ha ha ! Mais t'es pas la bonne personne pour faire ça, mon loulou", 403
 

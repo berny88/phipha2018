@@ -5,7 +5,7 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <div class="pull-left">
-                            <h4>Identité du parieur</h4>
+                            <h4>Identity of the bettor</h4>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
@@ -22,7 +22,7 @@
                           <input type="email" class="form-control" id="email" name="email" ng-model="user.email"
                           placeholder="Votre email" value="{{user.email}}" disabled>
 
-                          <label for="nickName" class="control-label">Surnom</label>
+                          <label for="nickName" class="control-label">Nickname</label>
                           <div ng-show="hasAuthorization()">
                               <input type="nickName" class="form-control" id="nickName" name="nickName" ng-model="user.nickName" placeholder="Votre surnom" value="{{user.nickName}}" required="required">
                                 <script>
@@ -44,7 +44,7 @@
                           </div>
 
                           <div ng-show="hasAuthorization()">
-                            <label for="thepwd" class="control-label">Mot de passe</label>
+                            <label for="thepwd" class="control-label">Password</label>
                             <input type="password" class="form-control" id="thepwd" name="thepwd" ng-model="user.pwd"
                               placeholder="Mot de passe" value="" required="required">
                               <br/>
@@ -57,8 +57,8 @@
                       </div>
                       <div class="form-group">
                           <button ng-show="hasAuthorization()" type="submit" id="submit" name="submit" value="Sauvegarder"
-                            class="btn btn-primary btn-lg">Sauvegarder</button>
-                          <a class="btn" href="#users">Retour</a>
+                            class="btn btn-primary btn-lg">Save</button>
+                          <a class="btn" href="#users">Back</a>
                       </div>
                     </form>
                 </div>
@@ -80,7 +80,7 @@
                     <form name="avatar" ng-submit="saveAvatar()" enctype="multipart/form-data">
                         <div class="form-group" required>
 
-                            <label for="avatar" class="control-label">Changer votre avatar</label>
+                            <label for="avatar" class="control-label">Change your avatar</label>
                             <input type="file" id="avatar" file-model="myAvatar" accept="image/jpeg" required="required">
                             <br/>
                             <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign"></span> Achtung : fichier de forme carrée au format jpg et de taille inférieure à 500 Ko</div>
@@ -88,8 +88,8 @@
                         </div>
                         <div class="form-group">
                             <button  type="submit" name="submit" value="Enregistrer"
-                                    class="btn btn-primary btn-lg">Enregistrer</button>
-                            <a class="btn" href="#users">Retour</a>
+                                    class="btn btn-primary btn-lg">Save</button>
+                            <a class="btn" href="#users">Back</a>
                         </div>
                     </form>
                 </div>
@@ -102,7 +102,7 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <div class="pull-left">
-                            <h4>Liste des communautés avec paris</h4>
+                            <h4>List of communities with bets</h4>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
@@ -114,7 +114,7 @@
                             <thead>
                             <tr>
                                 <th class="title">
-                                    <a ng-click="sortType='title';sortReverse=!sortReverse">Titre<span ng-show="sortType=='title'&&!sortReverse" class="glyphicon glyphicon-chevron-down"></span><span ng-show="sortType=='title' && sortReverse" class="glyphicon glyphicon-chevron-up"></span></a>
+                                    <a ng-click="sortType='title';sortReverse=!sortReverse">Title<span ng-show="sortType=='title'&&!sortReverse" class="glyphicon glyphicon-chevron-down"></span><span ng-show="sortType=='title' && sortReverse" class="glyphicon glyphicon-chevron-up"></span></a>
                                 </th>
                                 <th class="description">Description</th>
                             </tr>
@@ -137,5 +137,4 @@
     </div>
 </div>
 
-<div ng-include src="'static/js/piwik.js'"></div>
-
+<!--<div ng-include src="'static/js/piwik.js'"></div>-->

@@ -11,7 +11,7 @@ euro2016App.controller('ChatCtrl', ['$scope', '$routeParams', '$http', '$q', '$l
           minHeight: null,             // set minimum height of editor
           maxHeight: null,             // set maximum height of editor
           focus: true,                  // set focus to editable area after initializing summernote
-          placeholder: 'Par ici !'
+          placeholder: 'Here !'
         }
         );
 
@@ -34,10 +34,10 @@ euro2016App.controller('ChatCtrl', ['$scope', '$routeParams', '$http', '$q', '$l
             var postSize = Math.round(($('#inputText').summernote('code')).length / 1024);
 
             if ($('#inputText').summernote('isEmpty')) {
-                $.notify("Post vide !" , "error");
+                $.notify("Post empty !" , "error");
                 $('#inputText').summernote('focus');
             } else if (postSize > 600) { // we test "600" because of the html tags
-                $.notify("Post trop gros (" + postSize + "ko) ; doit être < 500 ko) ! " , "error");
+                $.notify("Post too big (" + postSize + "ko) ; must be < 500 ko) ! " , "error");
                 $('#inputText').summernote('focus')
             } else {
                 var currentUser = {};
@@ -56,7 +56,7 @@ euro2016App.controller('ChatCtrl', ['$scope', '$routeParams', '$http', '$q', '$l
                 .success(function(data, status, headers, config) {
                     newPost.post_id = data.post.post_id;
                     $scope.posts.posts.unshift(newPost);
-                    $.notify("Post ajouté !!" , "success");
+                    $.notify("Post added !!" , "success");
                 })
                 .error(function(data, status, headers, config) {
                     showAlertError("Erreur lors de la création du post ; erreur HTTP : " + status);
@@ -73,7 +73,7 @@ euro2016App.controller('ChatCtrl', ['$scope', '$routeParams', '$http', '$q', '$l
             $http.delete('chat/apiv1.0/posts/' + post.post_id, {timeout: canceler.promise})
             .success(function(data, status, headers, config) {
                 $scope.posts = data;
-                $.notify("Post supprimé !!" , "success");
+                $.notify("Post deleted !!" , "success");
             })
             .error(function(data, status, headers, config) {
                 if (status==403){
