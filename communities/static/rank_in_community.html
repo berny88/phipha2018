@@ -21,10 +21,10 @@
             </div>     
         <br>
 
-        <a href="javascript:history.back()">Retour</a><br/><br/>
+        <a href="javascript:history.back()">Back</a><br/><br/>
         <span><a class="btn btn-warning" href="#bets_of_the_day_in_community/{{community.community.com_id}}"><i class="glyphicon glyphicon-fire" aria-hidden="true"></i> Hot !</a></span>
         <span><a class="btn btn-danger" ng-href="#bet_in_community/{{community.community.com_id}}"><i class="glyphicon glyphicon-stats"></i> Bet !</a></span>
-        <span><a class="btn btn-success" ng-href="#bets_in_community/{{community.community.com_id}}"><i class="fa fa-line-chart" aria-hidden="true"></i> All the bets !</a></span>
+        <span><a class="btn btn-success" ng-href="#bets_in_community/{{community.community.com_id}}"><i class="fas fa-chart-line" aria-hidden="true"></i> All the bets !</a></span>
         </form>
 
 
@@ -48,10 +48,10 @@
                                 </div>
                                 <div class="panel-body" ng-init="getRankingInCommunity('FINAL')">
                                     <div class="alert alert-success" role="alert">
-                                        Faites votre choix :
+                                        Your choice :
                                         <div class="btn-group" role="group" aria-label="...">
-                                            <button id="btn-groupe" type="button" class="btn btn-success" ng-click="getRankingInCommunity('GROUPE')">Ranking of the group phase</button>
-                                            <button id="btn-final" type="button" class="btn btn-success active" ng-click="getRankingInCommunity('FINAL');">Ranking of the knockout phase</button>
+                                            <button id="btn-groupe" type="button" class="btn btn-success active" ng-click="getRankingInCommunity('GROUPE')">Ranking of the group phase</button>
+                                            <button id="btn-final" type="button" class="btn btn-success" ng-click="getRankingInCommunity('FINAL');">Ranking of the knockout phase</button>
                                             <button id="btn-all" type="button" class="btn btn-success" ng-click="getRankingInCommunity('ALL');">Overall ranking</button>
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@
                                         </div>
                                     </div>
                                     <center><span id="spinRanking"><img src="static/img/spin.gif"></span></center>
-                                    <center><a href="#stats_ranking"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Global ranking</a></center>
+                                    <center><a href="#stats_ranking"><i class="fas fa-chart-bar" aria-hidden="true"></i>&nbsp;Global ranking</a></center>
                                 </div>
                             </div>
                         </div>
