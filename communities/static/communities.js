@@ -37,12 +37,12 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
                 "circle_bg_color": "#60686F",
                 "time": {
                     "Days": {
-                        "text": "Jours",
+                        "text": "Days",
                         "color": "#FFCC66",
                         "show": true
                     },
                     "Hours": {
-                        "text": "Heures",
+                        "text": "Hours",
                         "color": "#99CCFF",
                         "show": true
                     },
@@ -52,7 +52,7 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
                         "show": true
                     },
                     "Seconds": {
-                        "text": "Secondes",
+                        "text": "Seconds",
                         "color": "#FF9999",
                         "show": true
                     }
