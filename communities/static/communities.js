@@ -306,7 +306,7 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
 /* Blog block  */
 /* *********** */
     var blog = this;
-    $scope.title = "Le blog";
+    $scope.title = "The blog";
 
     $scope.posts = {};
     $http.get('communities/apiv1.0/communities/' + $routeParams.com_id + '/blogs').success(function(data){
