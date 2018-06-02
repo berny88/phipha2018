@@ -224,7 +224,8 @@ class BlogsManager(DbManager):
 
             for r in recipients:
                 logger.debug(r)
-                mail.personalizations[0].add_to(Email(r))
+                mail.personalizations[0].add_bcc(Email(r))
+            logger.debug(mail.personalizations)
 
             response = sg.client.mail.send.post(request_body=mail.get())
             logger.debug(response.status_code)
