@@ -90,7 +90,9 @@ euro2016App.controller('UserDetailCtrl', ['$scope', '$http', '$q', '$routeParams
 
         })
         .error(function(data, status, headers, config) {
-            if (status==403){
+            if (status==-1) {
+                //do nothing
+            }else if (status==403){
                 showAlertError("Même pas en rêve ! status=" + status+ " " + data);
             }else if (status==401){
                 showAlertError("Des problèmes de mémoire ? un Pirate en formation ? : status=" + status + " " + data);
@@ -108,7 +110,11 @@ euro2016App.controller('UserDetailCtrl', ['$scope', '$http', '$q', '$routeParams
             $('#spin').hide();
         })
         .error(function(data, status, headers, config) {
-            showAlertError("Erreur lors de la récupération des communautés ; erreur HTTP : " + status);
+            if (status==-1) {
+                //do nothing
+            } else {
+                showAlertError("Erreur lors de la récupération des communautés ; erreur HTTP : " + status);
+            }
             $('#spin').hide();
         });
     }
@@ -133,7 +139,9 @@ euro2016App.controller('UserDetailCtrl', ['$scope', '$http', '$q', '$routeParams
             $.notify("Avatar enregistré !!" , "success");
         })
         .error(function(data, status, headers, config) {
-            if (status==403){
+            if (status==-1) {
+                //do nothing
+            } else if (status==403){
                 showAlertError("Même pas en rêve ! status=" + status+ " " + data);
             }else if (status==413){
                 showAlertError("Problème avec votre fichier : " + data);
@@ -175,7 +183,9 @@ euro2016App.controller('LoginCtrl', ['$scope', '$http', '$q', '$routeParams', '$
                 $.notify("Bienvenue "+data.user.nickName +" !!" , "success");
             })
             .error(function(data, status, headers, config) {
-                if (status==404){
+                if (status==-1) {
+                    //do nothing
+                } else if (status==404){
                     showAlertError("Ben, tu veux allez en vrai ? : status=" + status);
                 }else if (status==401){
                     showAlertError("Des problèmes de mémoire ? un Pirate en formation ? : status=" + status + " " + data);
@@ -217,7 +227,11 @@ euro2016App.controller('LogoutCtrl', ['$scope', '$http', '$q', '$location','$tim
                     $.notify("Good bye  !!" , "success");
                 })
                 .error(function(data, status, headers, config) {
-                    showAlertError("Erreur lors de connexion ; erreur HTTP : " + status + " " + data);
+                    if (status==-1) {
+                        //do nothing
+                    } else {
+                        showAlertError("Erreur lors de connexion ; erreur HTTP : " + status + " " + data);
+                    }
                 });
 
             }

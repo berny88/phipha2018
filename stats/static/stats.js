@@ -164,7 +164,11 @@ euro2016App.controller('statsRankingCtrl', ['$scope', '$http', '$q', '$routePara
             $('#divRanking').show();
         })
         .error(function(data, status, headers, config) {
-            showAlertError("Erreur lors de la récupération du classement général ; erreur HTTP : " + status);
+            if (status==-1) {
+                //do nothing
+            } else {
+                showAlertError("Erreur lors de la récupération du classement général ; erreur HTTP : " + status);
+            }
             $('#spin').hide();
         });
     }
@@ -304,7 +308,11 @@ euro2016App.controller('statsRankingCtrl', ['$scope', '$http', '$q', '$routePara
 
         })
         .error(function(data, status, headers, config) {
-            showAlertError("Erreur lors de la récupération de l'historique des classements ; erreur HTTP : " + status);
+            if (status==-1) {
+                //do nothing
+            } else {
+                showAlertError("Erreur lors de la récupération de l'historique des classements ; erreur HTTP : " + status);
+            }
             $('#spin').hide();
             $('#spin3').hide();
         });
@@ -382,7 +390,11 @@ euro2016App.controller('statsRankingCtrl', ['$scope', '$http', '$q', '$routePara
 
         })
         .error(function(data, status, headers, config) {
-            showAlertError("Erreur lors de la récupération de la liste des communautés ; erreur HTTP : " + status);
+            if (status==-1) {
+                //do nothing
+            } else {
+                showAlertError("Erreur lors de la récupération de la liste des communautés ; erreur HTTP : " + status);
+            }
             $('#spin_communities_ranking').hide();
         });
 
@@ -420,7 +432,11 @@ euro2016App.controller('statsRankingCtrl', ['$scope', '$http', '$q', '$routePara
                     }
                 })
                 .error(function(data, status, headers, config) {
-                    showAlertError("Erreur lors de la récupération du classement de la communauté ; erreur HTTP : " + status);
+                    if (status==-1) {
+                        //do nothing
+                    } else {
+                        showAlertError("Erreur lors de la récupération du classement de la communauté ; erreur HTTP : " + status);
+                    }
                 })
             );
 

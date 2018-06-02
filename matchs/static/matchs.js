@@ -51,7 +51,9 @@ euro2016App.controller('matchsCtrl', ['$scope', '$http', '$q', '$timeout', '$win
                 $.notify("Matchs sauvegardés !" , "success");
             })
             .error(function(data, status, headers, config) {
-                if (status==403){
+                if (status==-1) {
+                    //do nothing
+                } else if (status==403){
                     showAlertError("Même pas en rêve ! status=" + status+ " " + data);
                 } else {
                     showAlertError("Erreur lors de la mise à jour des matchs ; erreur HTTP : " + status);
@@ -67,7 +69,9 @@ euro2016App.controller('matchsCtrl', ['$scope', '$http', '$q', '$timeout', '$win
                 $('#spin_histo').hide();
             })
             .error(function(data, status, headers, config) {
-                if (status==403){
+                if (status==-1) {
+                    //do nothing
+                } else if (status==403){
                     showAlertError("Même pas en rêve ! status=" + status+ " " + data);
                 } else {
                     showAlertError("Erreur lors de l'enregistrement de l'historique des classements ; erreur HTTP : " + status);

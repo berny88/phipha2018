@@ -23,7 +23,11 @@ euro2016App.controller('ChatCtrl', ['$scope', '$routeParams', '$http', '$q', '$l
                 $('#spin').hide();
             })
             .error(function(data, status, headers, config) {
-                showAlertError("Erreur lors de la récupération de la liste des posts ; erreur HTTP : " + status);
+                if (status==-1) {
+                    //do nothing
+                } else {
+                    showAlertError("Erreur lors de la récupération de la liste des posts ; erreur HTTP : " + status);
+                }
                 $('#spin').hide();
             });
             $('#postList').show();
@@ -59,7 +63,11 @@ euro2016App.controller('ChatCtrl', ['$scope', '$routeParams', '$http', '$q', '$l
                     $.notify("Post added !!" , "success");
                 })
                 .error(function(data, status, headers, config) {
-                    showAlertError("Erreur lors de la création du post ; erreur HTTP : " + status);
+                    if (status==-1) {
+                        //do nothing
+                    } else {
+                        showAlertError("Erreur lors de la création du post ; erreur HTTP : " + status);
+                    }
                 })
 
                 $('#inputText').summernote('focus');
@@ -76,7 +84,9 @@ euro2016App.controller('ChatCtrl', ['$scope', '$routeParams', '$http', '$q', '$l
                 $.notify("Post deleted !!" , "success");
             })
             .error(function(data, status, headers, config) {
-                if (status==403){
+                if (status==-1) {
+                    //do nothing
+                } else if (status==403){
                     showAlertError("Même pas en rêve ! status=" + status+ " " + data);
                 } else {
                     showAlertError("Erreur lors de la suppression du post ; erreur HTTP : " + status);

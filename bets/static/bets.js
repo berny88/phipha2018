@@ -18,7 +18,11 @@ euro2016App.directive('customPopover', function ($http,$timeout) {
 
                     })
                     .error(function(data, status, headers, config) {
-                        showAlertError("Erreur lors de la récupération des statistiques ; erreur HTTP : " + status);
+                        if (status==-1) {
+                            //do nothing
+                        }else {
+                            showAlertError("Erreur lors de la récupération des statistiques ; erreur HTTP : " + status);
+                        }
                     });
             })
         }
@@ -83,7 +87,11 @@ euro2016App.controller('BetsCtrl', ['$scope', '$routeParams', '$http', '$q', '$l
 
                 })
                 .error(function(data, status, headers, config) {
-                    showAlertError("Erreur lors de la récupération de la liste des paris ; erreur HTTP : " + status);
+                    if (status==-1) {
+                        //do nothing
+                    }else {
+                        showAlertError("Erreur lors de la récupération de la liste des paris ; erreur HTTP : " + status);
+                    }
                     $('#spin_bets_groupe').hide();
                     $('#spin_bets_final').hide();
                     gauge.update(0);
@@ -117,7 +125,9 @@ euro2016App.controller('BetsCtrl', ['$scope', '$routeParams', '$http', '$q', '$l
                 $('#pleaseWaitDialog').modal('hide');
             })
             .error(function(data, status, headers, config) {
-                if (status==403){
+                if (status==-1) {
+                    //do nothing
+                } else if (status==403){
                     showAlertError("Même pas en rêve ! status=" + status+ " " + data);
                 } else {
                     showAlertError("Erreur lors de la création des paris ; erreur HTTP : " + status);

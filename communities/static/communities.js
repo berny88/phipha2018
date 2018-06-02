@@ -69,7 +69,11 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
                 $('#spin').hide();
             })
             .error(function(data, status, headers, config) {
-                showAlertError("Erreur lors de la récupération de la liste des communautés ; erreur HTTP : " + status);
+                if (status==-1) {
+                    //do nothing
+                } else {
+                    showAlertError("Erreur lors de la récupération de la liste des communautés ; erreur HTTP : " + status);
+                }
                 $('#spin').hide();
             });
         }
@@ -84,7 +88,11 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
                     $('#spin').hide();
                 })
                 .error(function(data, status, headers, config) {
-                    showAlertError("Erreur lors de la récupération de la liste des communautés ; erreur HTTP : " + status);
+                    if (status==-1) {
+                        //do nothing
+                    } else {
+                        showAlertError("Erreur lors de la récupération de la liste des communautés ; erreur HTTP : " + status);
+                    }
                     $('#spin').hide();
                 });
             }
@@ -97,7 +105,11 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
                 $scope.community = data;
             })
             .error(function(data, status, headers, config) {
-                showAlertError("Erreur lors de la récupération de la communauté ; erreur HTTP : " + status);
+                if (status==-1) {
+                    //do nothing
+                } else {
+                    showAlertError("Erreur lors de la récupération de la communauté ; erreur HTTP : " + status);
+                }
             });
 
             $scope.displayBlogPostSaveButton = false;
@@ -120,7 +132,9 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
                 $.notify("Communauté modifiée avec succès !!" , "success");
             })
             .error(function(data, status, headers, config) {
-                if (status==403){
+                if (status==-1) {
+                    //do nothing
+                } else if (status==403){
                     showAlertError("Même pas en rêve ! status=" + status+ " " + data);
                 } else {
                     showAlertError("Erreur lors de la modification de la communauté ; erreur HTTP : " + status);
@@ -141,7 +155,11 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
 
             })
             .error(function(data, status, headers, config) {
-                showAlertError("Erreur lors de la création de la communauté ; erreur HTTP : " + status);
+                if (status==-1) {
+                    //do nothing
+                } else {
+                    showAlertError("Erreur lors de la création de la communauté ; erreur HTTP : " + status);
+                }
             });
         }
 
@@ -162,7 +180,9 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
             })
             .error(function(data, status, headers, config) {
                 closeModal();
-                if (status==403){
+                if (status==-1) {
+                    //do nothing
+                } else if (status==403){
                     showAlertError("Même pas en rêve ! status=" + status+ " " + data);
                 } else {
                     showAlertError("Erreur lors de la suppression de la communauté ; erreur HTTP : " + status);
@@ -177,7 +197,11 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
                 $('#nbPlayers_'+com_id).html(data.data.playerCount);
             })
             .error(function(data, status, headers, config) {
-                showAlertError("Erreur lors de la récupération du nombre de parieurs dans la communauté ; erreur HTTP : " + status);
+                if (status==-1) {
+                    //do nothing
+                } else {
+                    showAlertError("Erreur lors de la récupération du nombre de parieurs dans la communauté ; erreur HTTP : " + status);
+                }
             });
         }
 
@@ -192,7 +216,11 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
                 $scope.players = data;
             })
             .error(function(data, status, headers, config) {
-                showAlertError("Erreur lors de la récupération des parieurs dans la communauté ; erreur HTTP : " + status);
+                if (status==-1) {
+                    //do nothing
+                } else {
+                    showAlertError("Erreur lors de la récupération des parieurs dans la communauté ; erreur HTTP : " + status);
+                }
             });
         }
 
@@ -248,7 +276,11 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
 
             })
             .error(function(data, status, headers, config) {
-                showAlertError("Erreur lors de la récupération du classement de la communauté ; erreur HTTP : " + status);
+                if (status==-1) {
+                    //do nothing
+                } else {
+                    showAlertError("Erreur lors de la récupération du classement de la communauté ; erreur HTTP : " + status);
+                }
                 $('#spin').hide();
                 $('#spinBets').hide();
                 $('#spinRanking').hide();
@@ -275,7 +307,11 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
 
             })
             .error(function(data, status, headers, config) {
-                showAlertError("Erreur lors de la récupération des paris du jour de la communauté ; erreur HTTP : " + status);
+                if (status==-1) {
+                    //do nothing
+                } else {
+                    showAlertError("Erreur lors de la récupération des paris du jour de la communauté ; erreur HTTP : " + status);
+                }
                 $('#spin').hide();
             });
         }
@@ -352,7 +388,11 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
             $scope.post ={};
         })
         .error(function(data, status, headers, config) {
-            showAlertError("Erreur lors de la création du post; erreur HTTP : " + status);
+            if (status==-1) {
+                //do nothing
+            } else {
+                showAlertError("Erreur lors de la création du post; erreur HTTP : " + status);
+            }
         });
     };
 
@@ -370,7 +410,11 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
             $scope.selectTab('CommunitiesCtrl')
         })
         .error(function(data, status, headers, config) {
-            showAlertError("Erreur lors de la suppression du post; erreur HTTP : " + status);
+            if (status==-1) {
+                //do nothing
+            } else {
+                showAlertError("Erreur lors de la suppression du post; erreur HTTP : " + status);
+            }
         });
     };
 
@@ -385,7 +429,11 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
             $.notify("Email envoyé !!" , "success");
         })
         .error(function(data, status, headers, config) {
-            showAlertError("Erreur lors l'envoi de l'email; erreur HTTP : " + status);
+            if (status==-1) {
+                //do nothing
+            } else {
+                showAlertError("Erreur lors l'envoi de l'email; erreur HTTP : " + status);
+            }
         });
     }
 
@@ -399,7 +447,11 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
             $.notify("Email envoyé !!" , "success");
         })
         .error(function(data, status, headers, config) {
-            showAlertError("Erreur lors l'envoi de l'email; erreur HTTP : " + status);
+            if (status==-1) {
+                //do nothing
+            } else {
+                showAlertError("Erreur lors l'envoi de l'email; erreur HTTP : " + status);
+            }
         });
     }
 
@@ -428,7 +480,11 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
             $scope.comment ={};
         })
         .error(function(data, status, headers, config) {
-            showAlertError("Erreur lors de la création du post; erreur HTTP : " + status);
+            if (status==-1) {
+                //do nothing
+            } else {
+                showAlertError("Erreur lors de la création du post; erreur HTTP : " + status);
+            }
         });
     };
 
