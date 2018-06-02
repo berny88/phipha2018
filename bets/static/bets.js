@@ -30,6 +30,8 @@ euro2016App.controller('BetsCtrl', ['$scope', '$routeParams', '$http', '$q', '$l
 
         var canceler = $q.defer();
 
+        $('#pleaseWaitDialog').modal('hide');
+
         // to split the table of bets :
         $scope.onlyGroupeFilter = function (bet) {
             return bet.category === 'GROUPE';
@@ -105,10 +107,14 @@ euro2016App.controller('BetsCtrl', ['$scope', '$routeParams', '$http', '$q', '$l
         }
 
         $scope.saveBets = function() {
+
+            $('#pleaseWaitDialog').modal('show');
+
             $http.put('communities/apiv1.0/communities/'+ $routeParams.com_id + '/users/'+ getConnectedUser($window).user_id +'/bets ', {bets: $scope.bets.bets, timeout: canceler.promise})
             .success(function(data, status, headers, config) {
                 //showAlertSuccess("Paris sauvegardés !");
                 $.notify("Bets saved !" , "success");
+                $('#pleaseWaitDialog').modal('hide');
             })
             .error(function(data, status, headers, config) {
                 if (status==403){
@@ -116,6 +122,7 @@ euro2016App.controller('BetsCtrl', ['$scope', '$routeParams', '$http', '$q', '$l
                 } else {
                     showAlertError("Erreur lors de la création des paris ; erreur HTTP : " + status);
                 }
+                $('#pleaseWaitDialog').modal('hide');
             })
         }
 
