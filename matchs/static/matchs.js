@@ -44,13 +44,16 @@ euro2016App.controller('matchsCtrl', ['$scope', '$http', '$q', '$timeout', '$win
         }
 
         $scope.saveMatchs = function() {
+            $('#pleaseWaitDialog').modal('show');
             console.log("getMatchs::$scope.no_save="+$scope.no_save);
             $http.put('matchs/apiv1.0/matchs', {matchs: $scope.matchs, no_save: $scope.no_save, timeout: canceler.promise})
             .success(function(data, status, headers, config) {
                 //showAlertSuccess("Paris sauvegardés !");
+                $('#pleaseWaitDialog').modal('hide');
                 $.notify("Matchs sauvegardés !" , "success");
             })
             .error(function(data, status, headers, config) {
+                $('#pleaseWaitDialog').modal('hide');
                 if (status==-1) {
                     //do nothing
                 } else if (status==403){
@@ -63,12 +66,15 @@ euro2016App.controller('matchsCtrl', ['$scope', '$http', '$q', '$timeout', '$win
 
         $scope.createHistoryRankings = function() {
             $('#spin_histo').show();
+            $('#pleaseWaitDialog').modal('show');
             $http.put('stats/apiv1.0/stats/historyrankings', {timeout: canceler.promise})
             .success(function(data, status, headers, config) {
+                $('#pleaseWaitDialog').modal('hide');
                 $.notify("Historique des classements enregistrés !" , "success");
                 $('#spin_histo').hide();
             })
             .error(function(data, status, headers, config) {
+                $('#pleaseWaitDialog').modal('hide');
                 if (status==-1) {
                     //do nothing
                 } else if (status==403){
