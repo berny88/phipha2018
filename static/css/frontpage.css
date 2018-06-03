@@ -12,7 +12,7 @@ body {
 
 .business-header {
     height: 200px;
-    background: url('/static/img/bandeau-euro.jpg') center center no-repeat scroll;
+    background: url('/static/img/bandeau.jpg') center center no-repeat scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
