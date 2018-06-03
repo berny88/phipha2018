@@ -269,10 +269,10 @@ def send_email_on_blog(com_id, blog_id):
         blog = blog_mgr.getBlogByCommunityAndBlogId(com_id, blog_id)
         if action == "all":
             logger.info(u"send_email_on_blog::for all - {}".format(blog))
-            blog_mgr.send_email_to_all(blog)
+            blog_mgr.send_email_to_all(com_id, blog)
         elif action == "me":
             logger.info(u"send_email_on_blog::for me - {} / {}".format(session["cookieUserKey"], blog))
-            blog_mgr.send_email_to_user_id(blog, session["cookieUserKey"])
+            blog_mgr.send_email_to_user_id(com_id, blog, session["cookieUserKey"])
         return jsonify({'msg': "successfull"}), 200
     else:
         return "hey poussin ! tu dois être authentifié, mon loulou", 401
