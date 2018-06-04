@@ -217,7 +217,7 @@ class BlogsManager(DbManager):
         <br/><h2>Leave your comments here: {}</h2>
         <br/><h1>And don't forget to bet: {}</h1></body></html>""".format(blog.body_to_mail(), urlBlog, url_to_bet)
         try:
-            from_email = Email("eurommxvi.foot@gmail.com", "phipha2018")
+            from_email = Email("eurommxvi.foot@gmail.com", "phipha2018-noreply-please")
             content = Content("text/html", body)
 
             mail = Mail(from_email, blog.title, from_email, content)
