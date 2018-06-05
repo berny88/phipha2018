@@ -11,7 +11,7 @@ euro2016App.directive('customPopover', function ($http,$timeout) {
                         $(el).popover({
                             trigger: 'focus',
                             html:true,
-                            title: 'Match odds',
+                            title: 'Trends',
                             content: '<table><tr><td>Number of players</td><td>: '+data.rates.nbBets +'</td></tr><tr><td>TeamA winner</td><td>: '+data.rates.winnerAPercent+'%</td></tr>'+'<tr><td>Draw</td><td>: '+data.rates.drawPercent+'%</td></tr>'+'<tr><td>TeamB winner</td><td>: '+data.rates.winnerBPercent+'%</td></tr></table>',
                             placement: attrs.popoverPlacement});
                         $(el).popover('show');
