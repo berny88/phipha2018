@@ -4,6 +4,7 @@ from bson.objectid import ObjectId
 import logging
 import math
 import sendgrid
+from sendgrid.helpers.mail import *
 from tools.Tools import DbManager, ToolManager
 from users.UserServices import UserManager
 from bets.BetsServices import BetsManager
@@ -242,20 +243,20 @@ class MatchsManager(DbManager):
                 logger.info("bet update")
                 bet_mgr.saveScore(bet)
 
-
-        message = sendgrid.Mail()
-        message.add_to("eurommxvi.foot@gmail.com")
-        message.set_from("eurommxvi.foot@gmail.com")
-        message.set_subject("euroxxxvi - bets")
+        from_email = Email("eurommxvi.foot@gmail.com")
+        to_email = Email("eurommxvi.foot@gmail.com")
+        subject = "phipha2018 - bets saved"
         head = u"<html><head></head><body><table border='1'><tr><td>m.key</td><td>teamA</td><td>teamB</td><td>resultA</td>"
         head=head+u"<td>resultB</td><td>&nbsp;</td><td>bet.key</td><td>com_id</td><td>user_id</td>"
         head=head+u"<td>bet.resultA</td><td>bet.resultB</td><td>bet.nbpoints</td></tr>"
-        content = head+"\n".join(bets_for_mail)+"</table></body></html>"
-        logger.info(content)
-        message.set_html(content)
+        content = Content("text/html", head+"\n".join(bets_for_mail)+"</table></body></html>")
+        mail = Mail(from_email, subject, to_email, content)
         tool = ToolManager()
         sg = tool.get_sendgrid()
-        sg.send(message)
+        response = sg.client.mail.send.post(request_body=mail.get())
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
 
         return None
 
