@@ -80,7 +80,7 @@ euro2016App.controller('UserDetailCtrl', ['$scope', '$http', '$q', '$routeParams
             $location.path("/users")
             $timeout(function() {
                 if ($routeParams.firstConnection) {
-                    showAlertSuccess("Bienvenue " + $scope.user.nickName + " ! Cliquez <a href='#/signin'>ici</a> pour vous identifier.");
+                    showAlertSuccess("Welcome " + $scope.user.nickName + " ! Click <a href='#/signin'>here</a> to log in.");
 
                 } else {
                     //showAlertSuccess("User [" + $scope.user.email + "] sauvegardé avec succès !");
@@ -95,7 +95,7 @@ euro2016App.controller('UserDetailCtrl', ['$scope', '$http', '$q', '$routeParams
             }else if (status==403){
                 showAlertError("Même pas en rêve ! status=" + status+ " " + data);
             }else if (status==401){
-                showAlertError("Des problèmes de mémoire ? un Pirate en formation ? : status=" + status + " " + data);
+                showAlertError("Bad login/password, try again !");
             }else{
                 showAlertError("Erreur lors de connexion ; erreur HTTP : " + status + " " + data);
             }
@@ -188,7 +188,7 @@ euro2016App.controller('LoginCtrl', ['$scope', '$http', '$q', '$routeParams', '$
                 } else if (status==404){
                     showAlertError("Ben, tu veux allez en vrai ? : status=" + status);
                 }else if (status==401){
-                    showAlertError("Des problèmes de mémoire ? un Pirate en formation ? : status=" + status + " " + data);
+                    showAlertError("Bad login/password, try again !");
                 }else{
                     showAlertError("Erreur lors de connexion ; erreur HTTP : " + status + " " + data);
                 }

@@ -146,6 +146,13 @@ input[type="number"] {
    font-size: 16px;
 }
 
+/* avoid a zoom with safari when focus in the field */
+input {
+   font-size: 16px;
+}
+.form-control {
+    font-size: 16px;
+}
 
 /* blog post*/
 * {
