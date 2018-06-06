@@ -136,7 +136,7 @@ euro2016App.controller('UserDetailCtrl', ['$scope', '$http', '$q', '$routeParams
         .success(function(data) {
             d = new Date();
             $('#img_avatar').attr('src', 'users/apiv1.0/users/'+ $routeParams.user_id +'/avatar?'+d.getTime());
-            $.notify("Avatar enregistré !!" , "success");
+            $.notify("Avatar saved !!" , "success");
         })
         .error(function(data, status, headers, config) {
             if (status==-1) {
@@ -144,13 +144,13 @@ euro2016App.controller('UserDetailCtrl', ['$scope', '$http', '$q', '$routeParams
             } else if (status==403){
                 showAlertError("Même pas en rêve ! status=" + status+ " " + data);
             }else if (status==413){
-                showAlertError("Problème avec votre fichier : " + data);
-                $.notify("Erreur sur l'enregistrement de l'avatar !!" , "error");
+                showAlertError("Problem with your file : " + data);
+                $.notify("Avatar saving error !!" , "error");
             }else if (status==415){
-                showAlertError("Problème avec votre fichier : " + data);
-                $.notify("Erreur sur l'enregistrement de l'avatar !!" , "error");
+                showAlertError("Problem with your file  : " + data);
+                $.notify("Avatar saving error !!" , "error");
             }else{
-                showAlertError("Erreur lors de l'enregistrement de l'avatar ; erreur HTTP : " + status);
+                showAlertError("Avatar saving error ; erreur HTTP : " + status);
             }
         });
 
@@ -180,7 +180,7 @@ euro2016App.controller('LoginCtrl', ['$scope', '$http', '$q', '$routeParams', '$
                 //$timeout(function() {
                 //       showAlertSuccess("Bienvenue "+data.user.nickName +" !!");
                 //   }, 1000);
-                $.notify("Bienvenue "+data.user.nickName +" !!" , "success");
+                $.notify("Welcome "+data.user.nickName +" !!" , "success");
             })
             .error(function(data, status, headers, config) {
                 if (status==-1) {

@@ -129,7 +129,7 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
                 //$timeout(function() {
                 //       showAlertSuccess("Communauté modifiée avec succès !!");
                 //    }, 1000);
-                $.notify("Communauté modifiée avec succès !!" , "success");
+                $.notify("Community successfully updated !!" , "success");
             })
             .error(function(data, status, headers, config) {
                 if (status==-1) {
@@ -151,7 +151,7 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
                 //$timeout(function() {
                 //       showAlertSuccess("Communauté créée avec succès !!");
                 //    }, 1000);
-                $.notify("Communauté créée avec succès !!" , "success");
+                $.notify("Community successfully created !!" , "success");
 
             })
             .error(function(data, status, headers, config) {
@@ -176,7 +176,7 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
                 $scope.communities = data;
                 closeModal();
                 //showAlertSuccess("Communauté [" + $scope.communityToDelete.title + "] supprimée avec succès !");
-                $.notify("Communauté [" + $scope.communityToDelete.title + "] supprimée avec succès !" , "success");
+                $.notify("Community [" + $scope.communityToDelete.title + "] successfully removed !" , "success");
             })
             .error(function(data, status, headers, config) {
                 closeModal();
@@ -383,7 +383,7 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
             console.log("new blog_id="+data.blog.blog_id)
             $scope.post = data.blog
             $scope.posts.unshift($scope.post);
-            $.notify("Post créé avec succès !!" , "success");
+            $.notify("Post successfully created !!" , "success");
             $scope.selectTab('CommunitiesCtrl')
             $scope.post ={};
         })
@@ -406,7 +406,7 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
         $http.delete('communities/apiv1.0/communities/' + $routeParams.com_id + '/blogs/'+post.blog_id,
          { timeout: canceler.promise})
         .success(function(data, status, headers, config) {
-            $.notify("Post supprimé avec succès !!" , "success");
+            $.notify("Post removed successfully !!" , "success");
             $scope.selectTab('CommunitiesCtrl')
         })
         .error(function(data, status, headers, config) {
@@ -426,7 +426,7 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
                     {comment: $scope.comment, timeout: canceler.promise})
         .success(function(data, status, headers, config) {
             console.log("send email to me="+data.msg)
-            $.notify("Email envoyé !!" , "success");
+            $.notify("Email sent !!" , "success");
         })
         .error(function(data, status, headers, config) {
             if (status==-1) {
@@ -444,7 +444,7 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
                     {comment: $scope.comment, timeout: canceler.promise})
         .success(function(data, status, headers, config) {
             console.log("send email to all="+data.msg)
-            $.notify("Email envoyé !!" , "success");
+            $.notify("Email sent !!" , "success");
         })
         .error(function(data, status, headers, config) {
             if (status==-1) {
@@ -476,7 +476,7 @@ euro2016App.controller('CommunitiesCtrl', ['$scope', '$routeParams', '$http', '$
                     {comment: $scope.comment, timeout: canceler.promise})
         .success(function(data, status, headers, config) {
             console.log("new comment result="+data.msg)
-            $.notify("Commentaire créé avec succès !!" , "success");
+            $.notify("Comment successfully created !!" , "success");
             $scope.comment ={};
         })
         .error(function(data, status, headers, config) {
