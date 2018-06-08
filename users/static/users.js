@@ -1,4 +1,4 @@
-euro2016App.controller('UsersListCtrl', ['$scope', '$http', '$q', function ($scope, $http, $q) {
+euro2016App.controller('UsersListCtrl', ['$scope', '$http', '$q', '$window', function ($scope, $http, $q, $window) {
 
         var canceler = $q.defer();
 
@@ -12,6 +12,14 @@ euro2016App.controller('UsersListCtrl', ['$scope', '$http', '$q', function ($sco
                 //ng-repeat :
                 $scope.users = data;
             });
+        }
+
+        $scope.canUpdate = function(user_id) {
+            var currentUser = {};
+            if (isConnected($window)) {
+                currentUser = getConnectedUser($window);
+            }
+            return ((currentUser.user_id == user_id) || isAdmin($window)) ? true : false;
         }
 
         $scope.$on('$destroy', function(){
