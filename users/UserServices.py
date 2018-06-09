@@ -124,10 +124,15 @@ def subscriptionPost():
         #return redirect("{}/#logon_successfull".format(url_root))
         return redirect("{}".format(urlcallback))
     else:
-        tool_mgr = ToolManager()
-        url_root = tool_mgr.getProperty("url_root")["value"]
-        return redirect("{}".format(url_root))
-
+        if user.validated:
+            tool_mgr = ToolManager()
+            url_root = tool_mgr.getProperty("url_root")["value"]
+            return redirect("{}".format(url_root))
+        else:
+            tool_mgr = ToolManager()
+            url_root = tool_mgr.getProperty("url_root")["value"]
+            urlcallback = u"{}/users/{}/confirmation".format(url_root, user.user_id)
+            return redirect("{}".format(urlcallback))
 
 @users_page.route('/<user_id>/confirmation', methods=['GET'])
 def confirmationSubscription(user_id):
