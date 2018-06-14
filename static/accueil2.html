@@ -93,7 +93,7 @@
                         <tbody ng-init="getMyCommunities();">
                         <tr ng-repeat="community in my_communities.communities | orderBy:sortType:sortReverse">
                             <!--<td>{{community.com_id}}</td>-->
-                            <td data-title="Titre">{{community.title}}</td>
+                            <td data-title="Title">{{community.title}}</td>
                             <td data-title="Desc.">{{community.description}}</td>
                             <td>
                                 <span><a class="btn btn-danger" href="#bet_in_community/{{community.com_id}}"><i class="fas fa-coins" aria-hidden="true"></i> Bet !</a></span>
