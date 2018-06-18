@@ -148,18 +148,41 @@
     </div>
 </div>
 
+<br/>
+
 <div class=" jumbotron container-fluid">
     <div class="row-fluid">
         <center><h1>TOP 5</h1></center>
         <div class="col-sm-6 col-sm-offset-3">
-            <center>
-                <img class="img-focus-picture img-responsive" src="/static/img/pictures/TOP5.png" alt="">
-            </center>
+
+            <div id="divRanking" class="contentContainer" style="display:none" ng-controller="statsRankingCtrl" ng-init="getRanking('GROUPE')">
+
+                <div class="skillBar" ng-repeat="ranking in rankings.data.rankings | limitTo:5">
+
+                    <div class="row-fluid">
+                        <div class="col-sm-1"><h4><span class="label label-info">{{$index + 1}}</span></h4></div>
+                        <div class="col-sm-8">
+                            <img height="32px" width="32px" class="img-circle" ng-src ="users/apiv1.0/users/{{ ranking.user.user_id }}/avatar?{{ currentDateForAvoidTheCache }}" >
+                            {{ranking.user.nickName}}
+                        </div>
+                        <div class="col-sm-3">
+                            {{ranking.nbPoints}} pts
+                        </div>
+                    </div>
+
+                    <div class="skillBarContainer">
+                        <div style="width:{{ ranking.nbPointsPercent }}%" class="skillBarValue"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <center><span id="spinRanking"><img src="static/img/spin.gif"></span></center>
+
         </div>
     </div>
 </div>
-
-<br/>
 
 <div class="container-fluid">
     <div class="row">

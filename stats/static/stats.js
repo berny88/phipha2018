@@ -141,6 +141,7 @@ euro2016App.controller('statsRankingCtrl', ['$scope', '$http', '$q', '$routePara
 
     $scope.getRanking = function(category) {
         $('#spin').show();
+        $('#spinRanking').show();
         $('#divRanking').hide();
 
         if (category == 'GROUPE') {
@@ -161,6 +162,7 @@ euro2016App.controller('statsRankingCtrl', ['$scope', '$http', '$q', '$routePara
         .success(function(data) {
             $scope.rankings = data;
             $('#spin').hide();
+            $('#spinRanking').hide();
             $('#divRanking').show();
         })
         .error(function(data, status, headers, config) {
@@ -170,6 +172,7 @@ euro2016App.controller('statsRankingCtrl', ['$scope', '$http', '$q', '$routePara
                 showAlertError("Erreur lors de la récupération du classement général ; erreur HTTP : " + status);
             }
             $('#spin').hide();
+            $('#spinRanking').hide();
         });
     }
 
