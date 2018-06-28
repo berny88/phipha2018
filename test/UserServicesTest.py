@@ -28,6 +28,7 @@ class TestUser(unittest.TestCase):
 
         user = mgr.getUserByEmail(u"email@test.fr")
 
+
         self.assertIsNotNone(user)
 
         self.assertIsNotNone(user.email)
