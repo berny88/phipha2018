@@ -48,7 +48,7 @@ logger.debug('test debug message')
 logger.info('test info message')
 logger.warn('test warn message')
 logger.error('test error message')
-logger.critical('test critical message')
+logger.critical('test critical message .')
 
 # Get application version from env
 app_version = os.environ.get('APP_VERSION')
