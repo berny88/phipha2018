@@ -137,12 +137,13 @@
         </div>
         <div class="col-sm-6">
             <center>
-                <!-- <a href="#signon">
+                <a href="#signon">
                     <img class="img-focus img-circle img-responsive img-center" src="/static/img/mondial98.jpg" alt="">
                     <h2>Sign up !</h2>
-                </a> -->
-                <img class="img-focus img-circle img-responsive img-center" style ="" src="/static/img/mondial98.jpg" alt="Inscriptions closed">
+                </a>
+                <!-- <img class="img-focus img-circle img-responsive img-center" style ="" src="/static/img/mondial98.jpg" alt="Inscriptions closed">
                 <h2>Inscriptions closed <br/> for this event !</h2>
+                -->
             </center>
         </div>
     </div>
@@ -155,7 +156,7 @@
         <center><h1>TOP 5</h1></center>
         <div class="col-sm-6 col-sm-offset-3">
 
-            <div id="divRanking" class="contentContainer" style="display:none" ng-controller="statsRankingCtrl" ng-init="getRanking('GROUPE')">
+            <div id="divRanking" class="contentContainer" style="display:none" ng-controller="statsRankingCtrl" ng-init="getRanking('FINAL')">
 
                 <div class="skillBar" ng-repeat="ranking in rankings.data.rankings | limitTo:5">
 
