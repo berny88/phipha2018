@@ -1,5 +1,5 @@
 <!-- Image Background Page Header -->
-<header class="business-header" ng-show="!isConnected()" >
+<header class="business-header" >
     <div class="container">
         <div class="row">
             <h1 class="tagline"></h1>
@@ -19,18 +19,18 @@
                     <table class="table table-condensed table-striped">
                         <tbody>
                         <tr>
-                            <td style="vertical-align:middle;text-align: center;">XXXX</td>
-                            <td style="vertical-align:middle;text-align: right;"><span class="newflags POR"></span></td>
+                            <td style="vertical-align:middle;text-align: center;">FRANCE</td>
+                            <td style="vertical-align:middle;text-align: right;"><span class="newflags FRA"></span></td>
                             <td style="vertical-align:middle;">
                                 <center>
                                     <table>
-                                        <tr><td><input style="width:35px;text-align:center;" value="1" disabled></td>
-                                            <td><input style="width:35px;text-align:center;" value="0" disabled></td>
+                                        <tr><td><input style="width:35px;text-align:center;" value="4" disabled></td>
+                                            <td><input style="width:35px;text-align:center;" value="2" disabled></td>
                                         </tr>
                                     </table>
                                 </center>
-                            <td style="vertical-align:middle;text-align: left;"><span class="newflags FRA"></span></td>
-                            <td style="vertical-align:middle;text-align: center;">YYYY</td>
+                            <td style="vertical-align:middle;text-align: left;"><span class="newflags CRO"></span></td>
+                            <td style="vertical-align:middle;text-align: center;">CROATIA</td>
                         </tr>
                         </tbody>
                     </table>
@@ -64,6 +64,14 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <center>
+            <img class="img-focus img-circle img-responsive img-center" src="/static/img/mondial2018.jpg" alt="">
+        </center>
     </div>
 </div>
 
@@ -129,34 +137,36 @@
     </div>
 </div>
 
-<div class="container-fluid">
-    <div class="row">
+<div class=" jumbotron container-fluid">
+    <div class="row-fluid">
         <center><h1>TOP 5</h1></center>
-        <div class="col-sm-6">
-            <center>
-                <h2>Individual - Knockout stage</h2>
-                <img class="img-responsive" src="/static/img/pictures/TOP5_phase_finale.png" alt="">
-            </center>
-        </div>
-        <div class="col-sm-6">
-            <center>
-                <h2>Individual - General ranking</h2>
-                <img class="img-responsive" src="/static/img/pictures/TOP5.png" alt="">
-            </center>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <center>
-                <h2>Community - Knockout stage</h2>
-                <img class="img-responsive" src="/static/img/pictures/TOP_com_phase_finale.png" alt="">
-            </center>
-        </div>
-        <div class="col-sm-6">
-            <center>
-                <h2>Community - General ranking</h2>
-                <img class="img-responsive" src="/static/img/pictures/TOP_com.png" alt="">
-            </center>
+        <div class="col-sm-6 col-sm-offset-3">
+
+            <div id="divRanking" class="contentContainer" style="display:none" ng-controller="statsRankingCtrl" ng-init="getRanking('FINAL')">
+
+                <div class="skillBar" ng-repeat="ranking in rankings.data.rankings | limitTo:5">
+
+                    <div class="row-fluid">
+                        <div class="col-sm-1"><h4><span class="label label-info">{{$index + 1}}</span></h4></div>
+                        <div class="col-sm-8">
+                            <img height="32px" width="32px" class="img-circle" ng-src ="users/apiv1.0/users/{{ ranking.user.user_id }}/avatar?{{ currentDateForAvoidTheCache }}" >
+                            {{ranking.user.nickName}}
+                        </div>
+                        <div class="col-sm-3">
+                            {{ranking.nbPoints}} pts
+                        </div>
+                    </div>
+
+                    <div class="skillBarContainer">
+                        <div style="width:{{ ranking.nbPointsPercent }}%" class="skillBarValue"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <center><span id="spinRanking"><img src="static/img/spin.gif"></span></center>
+
         </div>
     </div>
 </div>
